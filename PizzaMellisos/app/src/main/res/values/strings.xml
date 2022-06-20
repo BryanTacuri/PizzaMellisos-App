@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PizzaMellisos</string>
+
+    <string name="btn_login_pantalla">Iniciar Sesión</string>
+    <string name="btn_register_pantalla">Registrarse</string>
+    <string name="btn_lgin">Aceptar</string>
+    <string name="btn_salir">Salir</string>
+    <string name="btn_register">Registrarse</string>
+
+    <string name="btn_cerrar_sesion">Cerrar sesión</string>
+</resources>
