@@ -7,5 +7,5 @@
     <string name="btn_salir">Salir</string>
     <string name="btn_register">Registrarse</string>
 
-    <string name="btn_cerrar_sesion">Cerrar sesión</string>
+    <string name="btn_cerrar_sesion">Volver al login</string>
 </resources>

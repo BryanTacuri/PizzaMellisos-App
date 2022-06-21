@@ -16,6 +16,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:gravity="center"
+            android:text="LOGIN"
+            android:textColor="#E15A38"
+            android:textSize="24sp" />
+
         <EditText
             android:id="@+id/btnCorreoLogin"
             android:layout_width="match_parent"
@@ -40,13 +55,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="login"
-            android:text="@string/btn_lgin" />
+            android:text="@string/btn_lgin"
+            app:backgroundTint="#66BB6A" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="cancelar"
-            android:text="@string/btn_salir" />
+            android:text="@string/btn_salir"
+            app:backgroundTint="#E53935" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

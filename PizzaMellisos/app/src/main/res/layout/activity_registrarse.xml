@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Contraseña"
             android:inputType="textPassword"
             android:minHeight="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -39,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Confirmar contraseña"
             android:inputType="textPassword"
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
