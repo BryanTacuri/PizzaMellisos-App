@@ -9,12 +9,19 @@
     <LinearLayout
         android:layout_width="348dp"
         android:layout_height="634dp"
-        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="GRUPO #1"
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/imageView"
