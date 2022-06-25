@@ -107,40 +107,35 @@ public class RegistrarseActivity extends AppCompatActivity {
                                 }
                             });
                         } else {
-
                             Toast.makeText(getApplicationContext(), "Usuario ya ha sido registrado antes.",
                                     Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
                         }
                     }
                 });
     }
 
     public void registerUser(View view){
-         seleccion = spinnerCiudad.getSelectedItem().toString();
-
-
+        seleccion = spinnerCiudad.getSelectedItem().toString();
         if((nombre.getText().length() == 0) || (correo.getText().length() == 0) || (password.getText().length() == 0) || (apellido.getText().length() == 0)
                 || (edad.getText().length() == 0) || (telefono.getText().length() == 0) || (confirmPassword.getText().length() == 0)
                  || (seleccion.equals("Seleccione una ciudad"))) {
             Toast.makeText(this, "Llene todos los campos", Toast.LENGTH_SHORT).show();
-        }else{
-            if(((password.getText().length() < 6) || (password.getText().length() < 6))) {
+        }else if(((password.getText().length() < 6) || (password.getText().length() < 6))) {
                 Toast.makeText(this, "La contraseña debe ser igual o mayor a 6 digitos", Toast.LENGTH_SHORT).show();
-            }
-            if(telefono.getText().length() < 10){
+        }else if(telefono.getText().length() < 10 || telefono.getText().length() > 10){
                 Toast.makeText(this, "Ingrese un numero valido", Toast.LENGTH_SHORT).show();
-            }
-            if ((rbmasculino.isChecked())  || (rbfemenino.isChecked())){
+        } else  if ((rbmasculino.isChecked())  || (rbfemenino.isChecked())){
                 if (password.getText().toString().equals(confirmPassword.getText().toString())){
                     register();
                 }else{
                     Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 }
-            }
+            } else{
+                Toast.makeText(this, "Seleccione un sexo", Toast.LENGTH_SHORT).show();
 
+            }
         }
-    }
+
 
 
     public void cancelar(View view){
@@ -150,7 +145,6 @@ public class RegistrarseActivity extends AppCompatActivity {
 
     public void borrar(View view){
         nombre.setText("");
-
         apellido.setText("");
         edad.setText("");
         telefono.setText("");
@@ -159,5 +153,6 @@ public class RegistrarseActivity extends AppCompatActivity {
         confirmPassword.setText("");
         spinnerCiudad.setSelection(0);
         radioGroup.clearCheck();
+        Toast.makeText(this, "Se han borrado todos los campos", Toast.LENGTH_SHORT).show();
     }
 }
