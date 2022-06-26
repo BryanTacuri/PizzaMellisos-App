@@ -29,6 +29,13 @@ public class IniciarSesionActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
     }
         public void login(View view) {
+
+            Intent i = new Intent(getApplicationContext(), PantallaPrincipalActiviry.class);
+            i.putExtra("sms", "Datos correctos");
+            startActivity(i);
+            finish();
+
+            /*
             if ((correo.getText().length() == 0) || (password.getText().length() == 0)) {
                 Toast.makeText(this, "Ingrese todos los campos", Toast.LENGTH_SHORT).show();
 
@@ -55,7 +62,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
                                 }
                             }
                         });
-            }
+            }*/
         }
 
         public void onStart() {
