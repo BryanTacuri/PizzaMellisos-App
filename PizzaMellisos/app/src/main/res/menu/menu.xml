@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/opt_add_product"
+        android:title="@string/item_1" />
+    <item
+        android:id="@+id/opt_add_promotion"
+        android:title="@string/item_2" />
+    <item
+        android:id="@+id/opt_perfil"
+        android:title="@string/item_3" />
+    <item
+        android:id="@+id/opt_about_us"
+        android:title="@string/item_4" />
+    <item
+        android:id="@+id/opt_logout"
+        android:icon="@drawable/ic_baseline_keyboard_backspace_24"
+        android:title="@string/item_5" />
+</menu>
