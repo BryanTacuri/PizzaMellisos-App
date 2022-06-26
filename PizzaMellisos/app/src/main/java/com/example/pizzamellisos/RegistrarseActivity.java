@@ -141,6 +141,9 @@ public class RegistrarseActivity extends AppCompatActivity {
     public void cancelar(View view){
         Intent i = new Intent(getApplicationContext(),IniciarSesionActivity.class);
         startActivity(i);
+
+
+        
     }
 
     public void borrar(View view){
