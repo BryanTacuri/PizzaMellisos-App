@@ -143,7 +143,7 @@ public class RegistrarseActivity extends AppCompatActivity {
         startActivity(i);
 
 
-        
+
     }
 
     public void borrar(View view){
