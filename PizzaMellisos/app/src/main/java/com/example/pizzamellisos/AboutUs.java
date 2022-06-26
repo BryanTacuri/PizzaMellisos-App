@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -87,6 +88,12 @@ public class AboutUs extends AppCompatActivity {
     }
 
     public void gotToBack(View v){
-        onBackPressed();
+        //onBackPressed();
+        Intent i = new Intent(getApplicationContext(), IniciarSesionActivity.class);
+
+        startActivity(i);
+
+
+        finish();
     }
 }

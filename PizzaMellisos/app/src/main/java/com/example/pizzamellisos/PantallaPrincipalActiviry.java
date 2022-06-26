@@ -21,7 +21,7 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_pantalla_principal_activiry);
-      //  mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
        // mostrar = (TextView)findViewById(R.id.textMostrar);
         //String sms = getIntent().getStringExtra("sms");
     //    mostrar.setText(sms);
@@ -60,13 +60,16 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
     }
     private void goToAboutUsActivity(){
         Intent i = new Intent(getApplicationContext(), AboutUs.class);
+
         startActivity(i);
 
     }
     private void logOut(){
         mAuth.signOut();
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);startActivity(i);
+        Intent i = new Intent(getApplicationContext(), IniciarSesionActivity.class);
         startActivity(i);
+
+
         finish();
     }
 }
