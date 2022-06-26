@@ -12,6 +12,23 @@
     <string name="rb1">Masculino</string>
     <string name="rb2">Femenino</string>
 
+    <string name="name_group">Grupo #1</string>
+
+
+    <string name="name_dev1">Del Valle Anthony</string>
+    <string name="correo_dev1">Anthony.delvallel@ug.edu.ec</string>
+
+    <string name="name_dev2">Pincay Daniel</string>
+    <string name="correo_dev2">Alexis.pincayc@ug.edu.ec</string>
+
+
+    <string name="correo_dev3">Bryan.tacuria@ug.edu.ec</string>
+    <string name="name_dev3">Tacuri Elian</string>
+
+    <string name="name_dev4">Zambrano Briggitte</string>
+    <string name="correo_dev4">Briggiite.zambranom@ug.edu.ec</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="btn_back">Regresar</string>
 
 
 </resources>
