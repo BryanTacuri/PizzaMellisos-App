@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.pizzamellisos.adapters.ListDevelopersAdapter;
@@ -34,6 +35,7 @@ public class AboutUs extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_about_us);
         listDevelopers=findViewById(R.id.listDevps);
         //LinearLayoutManager lil = new LinearLayoutManager(this);
@@ -76,5 +78,15 @@ public class AboutUs extends AppCompatActivity {
     private void makeToast(String message){
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
+    }
+
+    public void gotToBack(View v){
+        onBackPressed();
     }
 }
