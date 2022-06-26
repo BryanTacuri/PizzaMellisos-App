@@ -47,10 +47,10 @@ public class IniciarSesionActivity extends AppCompatActivity {
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(getApplicationContext(), PantallaPrincipalActiviry.class);
-                                    i.putExtra("sms", "Datos incorrectos");
-                                    startActivity(i);
-                                    finish();
+                                    //Intent i = new Intent(getApplicationContext(), PantallaPrincipalActiviry.class);
+                                    //i.putExtra("sms", "Datos incorrectos");
+                                    //startActivity(i);
+                                    //finish();
                                     //updateUI(null);
                                 }
                             }
