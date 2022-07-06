@@ -4,6 +4,7 @@
     package="com.example.pizzamellisos">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <application android:requestLegacyExternalStorage="true"></application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
     <application
