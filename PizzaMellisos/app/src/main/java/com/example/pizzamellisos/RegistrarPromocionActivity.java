@@ -1,5 +1,6 @@
 package com.example.pizzamellisos;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -57,19 +58,18 @@ public class RegistrarPromocionActivity extends AppCompatActivity {
 
         if(statusSD == 0) {
             try {
-                File ruta_sd = Environment.getExternalStorageDirectory();
+                /*File ruta_sd = Environment.getExternalStorageDirectory();
                 File raizSD = new File(ruta_sd.getAbsolutePath(), "datos_sd.txt");
                 OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(raizSD));
                 osw.write(data);
                 osw.close();
-                /*fileOutputStream = openFileOutput("datos_sd.txt", MODE_PRIVATE);
+                fileOutputStream = openFileOutput("datos_sd.txt", MODE_PRIVATE);
                 fileOutputStream.write(data.getBytes());
                 File ruta_sd = new File(Environment.getExternalStorageState());
                 Log.d("TAG1", "Guardado en: "+ruta_sd);
                 OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(ruta_sd));
                 osw.write(data);
                 osw.close();*/
-                Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
                 /*File raizSD = new File(ruta_sd.getAbsolutePath(), "datos_sd.txt");
                 FileOutputStream f = new FileOutputStream(raizSD);
 
@@ -81,6 +81,14 @@ public class RegistrarPromocionActivity extends AppCompatActivity {
                 f.close();
                 Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
                 Log.d("TAG1", "Guardado en: "+f);*/
+                File sd = Environment.getExternalStorageDirectory();
+                File rutaArchivo = new File(sd.getAbsolutePath(), "datos_sd.txt");
+                OutputStreamWriter archivo = new OutputStreamWriter(openFileOutput("datos_sd.txt", Activity.MODE_PRIVATE));
+                Log.d("TAG1", "Guardado en: "+rutaArchivo);
+                archivo.write(data);
+                archivo.flush();
+                archivo.close();
+                Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 Log.e("Ficheros", "Error al escribir ficheros a tarjeta SD");
             } /*finally {
