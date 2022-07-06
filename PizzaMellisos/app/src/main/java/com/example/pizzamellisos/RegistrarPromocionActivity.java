@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -33,6 +34,7 @@ public class RegistrarPromocionActivity extends AppCompatActivity {
     private RadioButton rbmasculino, rbfemenino;
     private RadioGroup radioGroup;
     private String seleccion;
+    private Button verificar;
 
     private static final int PERMISSION_REQUEST_CODE = 1;
 
@@ -58,6 +60,15 @@ public class RegistrarPromocionActivity extends AppCompatActivity {
         correo = findViewById(R.id.btnCorreoLogin);
         password = findViewById(R.id.btnPasswordLogin);
         confirmPassword = findViewById(R.id.btnConfirmPassword);
+
+        verificar = (Button) findViewById(R.id.btnBorrarRegister);
+        verificar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), mostrararchivoActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void guardarSD(View v){
@@ -89,11 +100,6 @@ public class RegistrarPromocionActivity extends AppCompatActivity {
         }else{
             Log.e("Excepcion", "No se puede guardar");
         }
-    }
-
-    public void irA (View v) {
-        Intent i = new Intent(getApplicationContext(), mostrararchivo_activity.class);
-        startActivity(i);
     }
 
     private static boolean hasPermissions(Context context, String... permissions) {

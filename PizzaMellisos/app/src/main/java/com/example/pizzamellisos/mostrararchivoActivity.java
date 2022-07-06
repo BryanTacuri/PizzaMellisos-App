@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class mostrararchivo_activity extends AppCompatActivity {
+public class mostrararchivoActivity extends AppCompatActivity {
     private TextView mostrar;
 
     @Override
@@ -18,8 +18,6 @@ public class mostrararchivo_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mostrararchivo_activity);
         mostrar = (TextView) findViewById(R.id.txtv_mostrar);
-    }
-    public void leerArchivo (View v){
         try{
             BufferedReader aux = new BufferedReader(new InputStreamReader(openFileInput("datos_sd.txt")));
             String data = aux.readLine();
