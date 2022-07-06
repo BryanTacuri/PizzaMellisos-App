@@ -84,7 +84,7 @@ public class RegistrarPromocionActivity extends AppCompatActivity {
             try {
                 File ruta_sd = Environment.getExternalStorageDirectory();
 
-                File raizSD = new File(ruta_sd.getAbsolutePath(), "datos_sd.txt");
+                File raizSD = new File(getExternalFilesDir(null), "datos_sda.txt");
 
                 if(!raizSD.exists()){
                     raizSD.createNewFile();
