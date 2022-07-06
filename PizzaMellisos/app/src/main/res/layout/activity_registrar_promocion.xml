@@ -136,8 +136,8 @@
             android:id="@+id/btnBorrarRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="borrar"
-            android:text="@string/btn_borrar_register" />
+            android:onClick="irA"
+            android:text="Verificar" />
 
         <Button
             android:id="@+id/btnCancelarRegister"

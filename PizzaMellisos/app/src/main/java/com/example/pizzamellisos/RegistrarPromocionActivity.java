@@ -1,6 +1,7 @@
 package com.example.pizzamellisos;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,14 +13,17 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
@@ -29,6 +33,7 @@ public class RegistrarPromocionActivity extends AppCompatActivity {
     private RadioButton rbmasculino, rbfemenino;
     private RadioGroup radioGroup;
     private String seleccion;
+
     private static final int PERMISSION_REQUEST_CODE = 1;
 
     private static final String TAG = "MainActivity";
@@ -40,6 +45,7 @@ public class RegistrarPromocionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_registrar_promocion);
+
         ActivityCompat.requestPermissions(this, PERMISSIONS, 112);
         nombre = findViewById(R.id.txtNombreRegister);
         apellido = findViewById(R.id.txtApellidoRegister);
@@ -52,8 +58,6 @@ public class RegistrarPromocionActivity extends AppCompatActivity {
         correo = findViewById(R.id.btnCorreoLogin);
         password = findViewById(R.id.btnPasswordLogin);
         confirmPassword = findViewById(R.id.btnConfirmPassword);
-        //ArrayAdapter<CharSequence> adapter  = ArrayAdapter.createFromResource(this, R.array.spinner_ciudades, android.R.layout.simple_spinner_item);
-        //spinnerCiudad.setAdapter(adapter);
     }
 
     public void guardarSD(View v){
@@ -68,56 +72,29 @@ public class RegistrarPromocionActivity extends AppCompatActivity {
         if(statusSD == 0) {
             try {
                 File ruta_sd = Environment.getExternalStorageDirectory();
-                System.out.println("ey");
 
                 File raizSD = new File(ruta_sd.getAbsolutePath(), "datos_sd.txt");
+
                 if(!raizSD.exists()){
                     raizSD.createNewFile();
                 }
-
-                if(hasPermissions(this, PERMISSIONS)){
+                if(hasPermissions(this, PERMISSIONS)) {
                     OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(raizSD));
                     osw.write(data);
                     osw.close();
-                /*fileOutputStream = openFileOutput("datos_sd.txt", MODE_PRIVATE);
-                fileOutputStream.write(data.getBytes());
-                File ruta_sd = new File(Environment.getExternalStorageState());
-                Log.d("TAG1", "Guardado en: "+ruta_sd);
-                OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(ruta_sd));
-                osw.write(data);
-                osw.close();*/
-                    Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
-                /*File raizSD = new File(ruta_sd.getAbsolutePath(), "datos_sd.txt");
-                FileOutputStream f = new FileOutputStream(raizSD);
-
-                PrintWriter pw = new PrintWriter(f);
-                pw.println(data);
-                pw.println(".........");
-                pw.flush();
-                pw.close();
-                f.close();
-                Toast.makeText(getApplicationContext(), "Guardado", Toast.LENGTH_SHORT).show();
-                Log.d("TAG1", "Guardado en: "+f);*/
                 }
-
-
             } catch (Exception e) {
-                Log.e("Ficheros", "Error al escribir ficheros a tarjeta SD" +e.toString());
-            } /*finally {
-                if (fileOutputStream != null){
-                    try{
-                        fileOutputStream.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }*/
+                Log.e("Ficheros", "Error al escribir ficheros a tarjeta SD " +e.toString());
+            }
         }else{
-            Toast.makeText(getApplicationContext(), "No se puede guardar", Toast.LENGTH_SHORT).show();
+            Log.e("Excepcion", "No se puede guardar");
         }
     }
 
-
+    public void irA (View v) {
+        Intent i = new Intent(getApplicationContext(), mostrararchivo_activity.class);
+        startActivity(i);
+    }
 
     private static boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
