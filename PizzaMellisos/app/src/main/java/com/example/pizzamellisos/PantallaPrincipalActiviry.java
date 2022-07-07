@@ -44,6 +44,10 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
                 this.logOut();
                 break;
             }
+            case R.id.opt_product:
+                Intent i = new Intent(getApplicationContext(), Producto.class);
+                this.goToActivity(i);
+                break;
             case R.id.opt_about_us:
                 this.goToAboutUsActivity();
                 break;
@@ -53,16 +57,13 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
         }
         return true;
     }
-
-    public void cerrarSesion(View view){
-
-        this.logOut();
+    private void goToActivity(Intent i){
+        startActivity(i);
     }
+
     private void goToAboutUsActivity(){
         Intent i = new Intent(getApplicationContext(), AboutUs.class);
-
         startActivity(i);
-
     }
     private void logOut(){
         mAuth.signOut();

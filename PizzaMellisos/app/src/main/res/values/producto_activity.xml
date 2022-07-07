@@ -1,0 +1,17 @@
+
+<resources>
+
+    <string name="title_product">Mis Productos</string>
+    <string name="btn_agregar">Agregar Producto</string>
+
+    <string name="lblProductName">Nombre Producto</string>
+
+    <string name="lblProductDescription">Descripcion</string>
+    <string name="lblPrecio">Precio</string>
+    <string name="btnClose">x</string>
+    <string name="lblInfoDialog">Ingrese La Información</string>
+
+
+
+
+</resources>
