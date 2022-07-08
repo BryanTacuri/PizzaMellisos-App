@@ -3,7 +3,9 @@ package com.example.pizzamellisos;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class PantallaPrincipalActiviry extends AppCompatActivity {
     private TextView mostrar;
     private FirebaseAuth mAuth;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +29,9 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
        // mostrar = (TextView)findViewById(R.id.textMostrar);
         //String sms = getIntent().getStringExtra("sms");
     //    mostrar.setText(sms);
+
+        preferences = getSharedPreferences("sesiones", Context.MODE_PRIVATE);
+        editor = preferences.edit();
 
     }
 
@@ -67,6 +74,8 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
     }
     private void logOut(){
         mAuth.signOut();
+        editor.putBoolean("sesion", false);
+        editor.apply();
         Intent i = new Intent(getApplicationContext(), IniciarSesionActivity.class);
         startActivity(i);
 

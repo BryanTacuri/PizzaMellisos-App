@@ -58,7 +58,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="login"
@@ -72,5 +72,12 @@
             android:onClick="cancelar"
             android:text="@string/btn_salir"
             app:backgroundTint="#E53935" />
+
+        <CheckBox
+            android:id="@+id/checkSesionActiva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Mantener Sesión Activa" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
