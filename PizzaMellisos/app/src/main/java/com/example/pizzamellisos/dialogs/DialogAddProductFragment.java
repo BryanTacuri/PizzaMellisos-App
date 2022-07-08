@@ -4,8 +4,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
@@ -16,26 +21,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pizzamellisos.R;
 import com.example.pizzamellisos.entities.Product;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.Objects;
 import java.util.UUID;
 
 
 public class DialogAddProductFragment extends DialogFragment {
     private DatabaseReference fbDataBase;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+    Uri selectedImage;
     Activity actividad;
+
     //IComunicaFragments iComunicaFragments;
 
     Button btn_salir;
     Button btn_add_prodcut;
+    Button btn_image_product;
+    ImageView img_product;
 
     LinearLayout lienarProducts;
     CardView  card;
@@ -47,6 +68,7 @@ public class DialogAddProductFragment extends DialogFragment {
     public DialogAddProductFragment() {
         // Required empty public constructor
         this.fbDataBase= FirebaseDatabase.getInstance().getReference();
+        this.storageReference=FirebaseStorage.getInstance().getReference();
     }
 
 
@@ -68,29 +90,64 @@ public class DialogAddProductFragment extends DialogFragment {
         txtNameProduct=v.findViewById(R.id.txtNameProduct);
         txtDescriptionProduct=v.findViewById(R.id.txtDescriptionProduct);
         txtPrice=v.findViewById(R.id.txtPriceProduct);
-
+        btn_image_product=v.findViewById(R.id.btn_img_product);
+        img_product=v.findViewById(R.id.img_product);
         //lienarProducts=v.findViewById(R.id.lytProducts);
         createEvents();
         return builder.create();
     }
+    private void uploadImageAndData(){
+        final String uuid=UUID.randomUUID().toString();
 
+        StorageReference riversRef= storageReference.child("images/"+uuid);
+
+        riversRef.putFile(selectedImage)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // Get a URL to the uploaded content
+                        taskSnapshot
+                                .getStorage()
+                                .getDownloadUrl()
+                                .addOnSuccessListener(
+                                        new OnSuccessListener<Uri>() {
+                                            @Override
+                                            public void onSuccess(Uri uri) {
+                                               // Uri downloadUrl = uri;
+                                                //;
+                                                //return downloadUrl.getPath();
+                                                // System.out.println(downloadUrl.getPath());
+                                                String name_product=txtNameProduct.getText().toString();
+                                                String Description=txtDescriptionProduct.getText().toString();
+                                                double price=Double.parseDouble(txtPrice.getText().toString());
+                                                System.out.println(name_product+"  "+Description+" "+price );
+                                                String url=  uri.toString();
+                                                Product p= new Product(UUID.randomUUID().toString(), url, name_product, Description, price);
+                                                fbDataBase.child("products").child(p.getUid()).setValue(p);
+                                                Toast.makeText(getContext(), "Agregado", Toast.LENGTH_LONG);
+                                                dismiss();
+                                            }
+                                        }
+                                );
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                        // ...
+                    }
+                });
+    }
     private void createEvents() {
 
         btn_add_prodcut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name_product=txtNameProduct.getText().toString();
-                String Description=txtDescriptionProduct.getText().toString();
-                double price=Double.parseDouble(txtPrice.getText().toString());
-                System.out.println(name_product+"  "+Description+" "+price );
-                String url="";
-                Product p= new Product(UUID.randomUUID().toString(), url, name_product, Description, price);
-                fbDataBase.child("products").child(p.getUid()).setValue(p);
-                Toast.makeText(getContext(), "Agregado", Toast.LENGTH_LONG);
-                dismiss();
+                uploadImageAndData();
             }
         });
-
         btn_salir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,7 +155,35 @@ public class DialogAddProductFragment extends DialogFragment {
                 dismiss();
             }
         });
+        btn_image_product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+
+                someActivityResultLauncher.launch(photoPickerIntent);
+            }
+        });
     }
+
+    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    // There are no request codes
+                    // doSomeOperations();
+                    Intent data = result.getData();
+                     selectedImage = Objects.requireNonNull(data).getData();
+                    InputStream imageStream = null;
+                    try {
+                        imageStream = getActivity().getApplicationContext().getContentResolver().openInputStream(selectedImage);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    BitmapFactory.decodeStream(imageStream);
+                    img_product.setImageURI(selectedImage);// To display selected image in image view
+                }
+            });
 
     @Override
     public void onAttach(@NonNull Context context) {
