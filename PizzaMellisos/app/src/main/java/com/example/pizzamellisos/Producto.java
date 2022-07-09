@@ -60,8 +60,11 @@ public class Producto extends AppCompatActivity {
         );
 
     }
+
+
     private void prepareData(List<Product> products){
-        ListProductAdapter adapter= new ListProductAdapter(products);
+        ListProductAdapter adapter= new ListProductAdapter(products
+                , getSupportFragmentManager(), this);
         listProductsAdapter.setAdapter(adapter);
     }
 

@@ -4,6 +4,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -13,6 +14,7 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pizzamellisos.R;
+import com.example.pizzamellisos.dialogs.DialogAddProductFragment;
 import com.example.pizzamellisos.entities.Developers;
 import com.example.pizzamellisos.utils.DownloadImage;
 
@@ -51,6 +53,7 @@ public class ListDevelopersAdapter extends RecyclerView.Adapter<ListDevelopersAd
     public  class DeveloperViewHolder extends RecyclerView.ViewHolder {
         TextView name, email, phone, title;
         ImageView img;
+
         public DeveloperViewHolder(@NonNull View itemView) {
             super(itemView);
             email=itemView.findViewById(R.id.dev_email);
@@ -58,6 +61,9 @@ public class ListDevelopersAdapter extends RecyclerView.Adapter<ListDevelopersAd
             title=itemView.findViewById(R.id.dev_title);
             phone=itemView.findViewById(R.id.dev_phone);
             img=itemView.findViewById(R.id.dev_img);
+
+
+
         }
 
         public void bindData(Developers dev, int index){
@@ -65,6 +71,8 @@ public class ListDevelopersAdapter extends RecyclerView.Adapter<ListDevelopersAd
             email.setText(dev.getEmail());
             phone.setText(dev.getPhone());
             title.setText("Developer " + (index+1));
+
+
 
             new DownloadImage(img)
                     .execute(dev.getUrl_image());

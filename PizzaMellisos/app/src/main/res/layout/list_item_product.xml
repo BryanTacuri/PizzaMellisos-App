@@ -8,14 +8,18 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
+        android:layout_height="180dp"
+        android:padding="10dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,19 +41,23 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="5dp">
 
                 <ImageView
                     android:id="@+id/img_card_product_item"
-                    android:layout_width="wrap_content"
+                    android:layout_width="125dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="bottom"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <TextView
                         android:id="@+id/txt_desc_product_item"
@@ -74,7 +82,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:text="@string/btnEditar"
+                            app:backgroundTint="#FF9800" />
 
                         <Button
                             android:id="@+id/btn_delete_item_product"
@@ -85,7 +94,8 @@
                             android:layout_marginEnd="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_weight="1"
-                            android:text="Button" />
+                            android:text="@string/btnDelete"
+                            app:backgroundTint="#F44336" />
                     </LinearLayout>
                 </LinearLayout>
 

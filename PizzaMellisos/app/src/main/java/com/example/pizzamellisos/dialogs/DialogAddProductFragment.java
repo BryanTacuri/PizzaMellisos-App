@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.example.pizzamellisos.R;
 import com.example.pizzamellisos.entities.Product;
+import com.example.pizzamellisos.utils.DownloadImage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,6 +51,9 @@ public class DialogAddProductFragment extends DialogFragment {
     private StorageReference storageReference;
     Uri selectedImage;
     Activity actividad;
+    Boolean isEdit=false;
+    String uuid;
+    String urlDefault="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH_8v_IffBeD7lBfi9a00G30AfmqOLd9vZwg&usqp=CAU";
 
     //IComunicaFragments iComunicaFragments;
 
@@ -75,6 +79,7 @@ public class DialogAddProductFragment extends DialogFragment {
     @NonNull
     @Override
     public AlertDialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+
         return createDialogAddProduct();
     }
 
@@ -92,53 +97,90 @@ public class DialogAddProductFragment extends DialogFragment {
         txtPrice=v.findViewById(R.id.txtPriceProduct);
         btn_image_product=v.findViewById(R.id.btn_img_product);
         img_product=v.findViewById(R.id.img_product);
+
+
+        if(getArguments()!=null){
+            new DownloadImage(img_product)
+                    .execute(getArguments().getString("url"));
+            isEdit=getArguments().getBoolean("edit");
+            txtNameProduct.setText(getArguments().getString("name"));
+            txtDescriptionProduct.setText(getArguments().getString("desc"));
+            txtPrice.setText(getArguments().getString("price"));
+            urlDefault=getArguments().getString("url");
+            uuid=getArguments().getString("uuid");
+        }
+
+       // img_product.setText(getArguments().getString("name"));
+
+
+
         //lienarProducts=v.findViewById(R.id.lytProducts);
         createEvents();
         return builder.create();
     }
     private void uploadImageAndData(){
-        final String uuid=UUID.randomUUID().toString();
 
-        StorageReference riversRef= storageReference.child("images/"+uuid);
+        if(selectedImage!=null){
+            final String uuid=UUID.randomUUID().toString();
 
-        riversRef.putFile(selectedImage)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Get a URL to the uploaded content
-                        taskSnapshot
-                                .getStorage()
-                                .getDownloadUrl()
-                                .addOnSuccessListener(
-                                        new OnSuccessListener<Uri>() {
-                                            @Override
-                                            public void onSuccess(Uri uri) {
-                                               // Uri downloadUrl = uri;
-                                                //;
-                                                //return downloadUrl.getPath();
-                                                // System.out.println(downloadUrl.getPath());
-                                                String name_product=txtNameProduct.getText().toString();
-                                                String Description=txtDescriptionProduct.getText().toString();
-                                                double price=Double.parseDouble(txtPrice.getText().toString());
-                                                System.out.println(name_product+"  "+Description+" "+price );
-                                                String url=  uri.toString();
-                                                Product p= new Product(UUID.randomUUID().toString(), url, name_product, Description, price);
-                                                fbDataBase.child("products").child(p.getUid()).setValue(p);
-                                                Toast.makeText(getContext(), "Agregado", Toast.LENGTH_LONG);
-                                                dismiss();
+            StorageReference riversRef= storageReference.child("images/"+uuid);
+
+            riversRef.putFile(selectedImage)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // Get a URL to the uploaded content
+                            taskSnapshot
+                                    .getStorage()
+                                    .getDownloadUrl()
+                                    .addOnSuccessListener(
+                                            new OnSuccessListener<Uri>() {
+                                                @Override
+                                                public void onSuccess(Uri uri) {
+                                                    // Uri downloadUrl = uri;
+                                                    String url=  uri.toString();
+                                                    SaveOrEdit(url);
+                                                }
                                             }
-                                        }
-                                );
+                                    );
 
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        // ...
-                    }
-                });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                            // ...
+                        }
+                    });
+        }else{
+            System.out.println("Edit");
+
+            SaveOrEdit(urlDefault);
+        }
+
+    }
+
+    private void SaveOrEdit(String url){
+        String name_product=txtNameProduct.getText().toString();
+        String Description=txtDescriptionProduct.getText().toString();
+        double price=Double.parseDouble(txtPrice.getText().toString());
+
+        //String url=  uri.toString();
+        if(!isEdit){
+            Product p= new Product(UUID.randomUUID().toString(), url, name_product, Description, price);
+            fbDataBase.child("products").child(p.getUid()).setValue(p);
+            Toast.makeText(getContext(), "Agregado", Toast.LENGTH_LONG);
+            dismiss();
+        }else{
+
+            Product p= new Product(uuid, url, name_product, Description, price);
+            fbDataBase.child("products").child( p.getUid()).setValue(p);
+            Toast.makeText(getContext(), "Editado", Toast.LENGTH_LONG);
+            dismiss();
+
+        }
+
     }
     private void createEvents() {
 
