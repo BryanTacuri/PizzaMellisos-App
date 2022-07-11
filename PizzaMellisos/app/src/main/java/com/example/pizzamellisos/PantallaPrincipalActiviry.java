@@ -11,21 +11,26 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pizzamellisos.dialogs.DialogAddProductFragment;
+import com.example.pizzamellisos.dialogs.add_sales;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class PantallaPrincipalActiviry extends AppCompatActivity {
     private TextView mostrar;
     private FirebaseAuth mAuth;
+    private Button btnAddSales;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_pantalla_principal_activiry);
+        setContentView(R.layout.activity_pantalla_principal_activiry);
         mAuth = FirebaseAuth.getInstance();
+        btnAddSales = findViewById(R.id.btn_add_sales);
        // mostrar = (TextView)findViewById(R.id.textMostrar);
         //String sms = getIntent().getStringExtra("sms");
     //    mostrar.setText(sms);
@@ -33,6 +38,12 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
         preferences = getSharedPreferences("sesiones", Context.MODE_PRIVATE);
         editor = preferences.edit();
 
+    }
+
+
+    public void openAddSalesDialog(View v){
+        add_sales dialog=new add_sales();
+        dialog.show(getSupportFragmentManager(), "DialogAddSales");
     }
 
     @Override

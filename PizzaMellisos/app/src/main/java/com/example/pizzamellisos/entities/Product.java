@@ -71,4 +71,8 @@ public class Product {
     }
 
 
+    @Override
+    public String toString() {
+        return this.nameProduct +"- $"+this.priceProduct;
+    }
 }

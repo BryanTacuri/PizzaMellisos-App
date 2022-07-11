@@ -31,6 +31,8 @@
     <string name="btn_back">Regresar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lblPrincipalActivity">Mis Ventas</string>
+    <string name="lblVentasTotales">Ventas Totales</string>
 
 
 </resources>

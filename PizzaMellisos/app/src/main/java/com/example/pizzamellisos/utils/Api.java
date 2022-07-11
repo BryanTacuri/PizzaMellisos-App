@@ -20,7 +20,6 @@ public class Api {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     fbDataBase.getRoot().child(child).child(uid).setValue(null);
-
                                 }
                             })
                     .setNegativeButton("No",null).show();
@@ -31,4 +30,6 @@ public class Api {
         }
         return   resultDelete;
     }
+
+
 }
