@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b02f7628-e38f-404d-bf18-07026d52be9a" name="Changes" comment="" />
+    <list default="true" id="b02f7628-e38f-404d-bf18-07026d52be9a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/PizzaMellisos/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaMellisos/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaMellisos/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaMellisos/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaMellisos/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaMellisos/app/src/main/java/com/example/pizzamellisos/UserProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaMellisos/app/src/main/res/drawable/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaMellisos/app/src/main/res/layout/activity_user_profile.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaMellisos/app/src/main/res/values/ciudades.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +26,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2AuAh46j4RGgRc9b2csiYtEL991" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -22,6 +35,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/PizzaMellisos" />
   </component>

@@ -2,6 +2,7 @@
 <resources>
     <string-array name="spinner_ciudades">
         <item>Seleccione una ciudad</item>
+
         <item>Guayaquil</item>
         <item>Quito</item>
         <item>Cuenca</item>
