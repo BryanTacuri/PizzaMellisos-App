@@ -66,6 +66,10 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), Producto.class);
                 this.goToActivity(i);
                 break;
+            case R.id.opt_perfil:
+                Intent p =new Intent(getApplicationContext(), UserProfile.class);
+                this.goToActivity(p);
+                break;
             case R.id.opt_about_us:
                 this.goToAboutUsActivity();
                 break;
