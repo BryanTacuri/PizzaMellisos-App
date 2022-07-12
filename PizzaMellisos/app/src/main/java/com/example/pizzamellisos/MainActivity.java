@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         }
 
+        dbHelper dbh = new dbHelper(this);
+        SQLiteDatabase db = dbh.getWritableDatabase();
+
+
 
 
     }

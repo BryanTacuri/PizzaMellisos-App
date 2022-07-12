@@ -1,6 +1,5 @@
 package com.example.pizzamellisos;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,16 +12,11 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.example.pizzamellisos.db.dbUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegistrarseActivity extends AppCompatActivity {
 
@@ -33,12 +27,13 @@ public class RegistrarseActivity extends AppCompatActivity {
     private RadioButton rbmasculino, rbfemenino;
     private RadioGroup radioGroup;
     private String seleccion;
+    private String sexo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarse);
         mAuth = FirebaseAuth.getInstance();
-        nombre = findViewById(R.id.txtNombreRegister);
+        nombre = findViewById(R.id.txtNombreSet);
         apellido = findViewById(R.id.txtApellidoRegister);
         edad = findViewById(R.id.txtEdadRegister);
         telefono = findViewById(R.id.editTextPhone);
@@ -46,8 +41,8 @@ public class RegistrarseActivity extends AppCompatActivity {
         password = findViewById(R.id.btnPasswordLogin);
         confirmPassword = findViewById(R.id.btnConfirmPassword);
         spinnerCiudad = findViewById(R.id.spinnerCiudad);
-        rbmasculino = findViewById(R.id.rbMasculino);
-        rbfemenino = findViewById(R.id.rbFemenino);
+        rbmasculino = findViewById(R.id.rbSetMasculino);
+        rbfemenino = findViewById(R.id.rbSetFemenino);
         radioGroup = findViewById(R.id.radioSexo);
 
         //seleccion = spinnerCiudad.getSelectedItem().toString();
@@ -67,7 +62,7 @@ public class RegistrarseActivity extends AppCompatActivity {
 
     }
 
-    public void register(){
+    /*public void register(){
         mAuth.createUserWithEmailAndPassword(correo.getText().toString(), password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -112,9 +107,51 @@ public class RegistrarseActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }*/
+
+     public void register(){
+
     }
 
     public void registerUser(View view){
+        seleccion = spinnerCiudad.getSelectedItem().toString();
+        if((nombre.getText().length() == 0) || (correo.getText().length() == 0) || (password.getText().length() == 0) || (apellido.getText().length() == 0)
+                || (edad.getText().length() == 0) || (telefono.getText().length() == 0) || (confirmPassword.getText().length() == 0)
+                || (seleccion.equals("Seleccione una ciudad"))) {
+            Toast.makeText(this, "Llene todos los campos", Toast.LENGTH_SHORT).show();
+        }else if(((password.getText().length() < 6) || (password.getText().length() < 6))) {
+            Toast.makeText(this, "La contraseña debe ser igual o mayor a 6 digitos", Toast.LENGTH_SHORT).show();
+        }else if(telefono.getText().length() < 10 || telefono.getText().length() > 10){
+            Toast.makeText(this, "Ingrese un numero valido", Toast.LENGTH_SHORT).show();
+        } else  if ((rbmasculino.isChecked())  || (rbfemenino.isChecked())){
+            if (password.getText().toString().equals(confirmPassword.getText().toString())){
+                if(rbmasculino.isChecked()){
+                    sexo =  rbmasculino.getText().toString();
+                }else{
+                   sexo =  rbfemenino.getText().toString();
+                }
+               dbUser dbu = new dbUser(RegistrarseActivity.this);
+              long id =  dbu.insertarUser(nombre.getText().toString(), apellido.getText().toString(), edad.getText().toString(), telefono.getText().toString(),
+                       correo.getText().toString(), password.getText().toString(), spinnerCiudad.getSelectedItem().toString(), sexo);
+              if(id > 0){
+                  Toast.makeText(RegistrarseActivity.this, "REGISTRO EXITOSO ", Toast.LENGTH_LONG).show();
+
+              }else{
+                  Toast.makeText(RegistrarseActivity.this, "ERROR AL REGISTRAR", Toast.LENGTH_LONG).show();
+              }
+
+            }else{
+                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            }
+        } else{
+            Toast.makeText(this, "Seleccione un sexo", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+
+
+    /*public void registerUser(View view){
         seleccion = spinnerCiudad.getSelectedItem().toString();
         if((nombre.getText().length() == 0) || (correo.getText().length() == 0) || (password.getText().length() == 0) || (apellido.getText().length() == 0)
                 || (edad.getText().length() == 0) || (telefono.getText().length() == 0) || (confirmPassword.getText().length() == 0)
@@ -134,7 +171,7 @@ public class RegistrarseActivity extends AppCompatActivity {
                 Toast.makeText(this, "Seleccione un sexo", Toast.LENGTH_SHORT).show();
 
             }
-        }
+        }*/
 
 
 
