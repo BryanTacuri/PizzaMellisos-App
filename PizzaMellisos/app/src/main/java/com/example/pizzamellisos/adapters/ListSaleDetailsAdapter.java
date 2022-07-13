@@ -18,6 +18,10 @@ public class ListSaleDetailsAdapter extends RecyclerView.Adapter<ListSaleDetails
 
     private final List<SaleDetailForView> listDetails;
 
+    public List<SaleDetailForView> getListDetails() {
+        return listDetails;
+    }
+
     public ListSaleDetailsAdapter(List<SaleDetailForView> listDetails) {
         this.listDetails = listDetails;
     }
@@ -66,6 +70,8 @@ public class ListSaleDetailsAdapter extends RecyclerView.Adapter<ListSaleDetails
                 @Override
                 public void onClick(View view) {
                     listDetails.remove(i);
+                    notifyItemRemoved(i);
+                    notifyItemRangeChanged(i, listDetails.size());
                 }
             });
         }

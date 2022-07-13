@@ -24,9 +24,11 @@ import com.example.pizzamellisos.R;
 import com.example.pizzamellisos.adapters.ListProductAdapter;
 import com.example.pizzamellisos.adapters.ListSaleDetailsAdapter;
 import com.example.pizzamellisos.entities.Product;
+import com.example.pizzamellisos.entities.SaleDetail;
 import com.example.pizzamellisos.entities.SaleDetailForView;
 import com.example.pizzamellisos.entities.SaleHeader;
 import com.example.pizzamellisos.entities.SaleHeaderForView;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,10 +50,11 @@ public class add_sales extends DialogFragment {
     private TextView observation;
     private TextView txt_cantidad_sale;
     private Button btnAddDetail;
+    private Button btn_save_sale;
     private List<Product> productList=new ArrayList();
     private Product currentProduct;
     RecyclerView rcv_details_sale;
-
+    ListSaleDetailsAdapter adapter;
 
 
   //  private FirebaseStorage storage;
@@ -108,6 +111,9 @@ public class add_sales extends DialogFragment {
         txt_cantidad_sale=v.findViewById(R.id.txt_cantidad_sale);
         this.spinnerProducts =v.findViewById(R.id.spn_sales_products);
         rcv_details_sale=v.findViewById(R.id.rcv_details_sale);
+        btn_save_sale=v.findViewById(R.id.btn_save_sale);
+        client=v.findViewById(R.id.txt_sales_client);
+        observation=v.findViewById(R.id.txt_sales_observacion);
         //rcv_details_sale.setLayoutManager(new LinearLayoutManager(getContext()));
         initSpinner();
         initEvents();
@@ -118,7 +124,7 @@ public class add_sales extends DialogFragment {
     }
 
     private void prepareData(){
-        ListSaleDetailsAdapter adapter= new ListSaleDetailsAdapter(details
+         adapter= new ListSaleDetailsAdapter(details
                 );
         rcv_details_sale.setAdapter(adapter);
     }
@@ -127,9 +133,7 @@ public class add_sales extends DialogFragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 currentProduct=productList.get(i);
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -148,11 +152,41 @@ public class add_sales extends DialogFragment {
                               currentProduct.getPriceProduct(),
                               total
                       )
-
                 );
                 txt_cantidad_sale.setText("");
                 prepareData();
-                System.out.println(details.size());
+                btn_save_sale.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String client_=client.getText().toString();
+                        String observation_=observation.getText().toString();
+                        SaleHeader sale_h= new SaleHeader(UUID.randomUUID().toString());
+
+                        ArrayList<SaleDetail> sdtList=new ArrayList<>();
+                        double total=0;
+                        for (SaleDetailForView sdtv: adapter.getListDetails()) {
+                            total+=sdtv.getTotal();
+                            sdtList.add(new SaleDetail(sdtv.getUid(), sale_h.getUid(), sdtv.getProducto().getUid(), sdtv.getCount(), sdtv.getPrice(), sdtv.getTotal()));
+                        }
+                        sale_h.setClient(client_);
+                        sale_h.setTotal(total);
+                        sale_h.setObservation(observation_);
+                        fbDataBase.child("sales").child(sale_h.getUid()).setValue(sale_h)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        for (SaleDetail sdt: sdtList) {
+                                            fbDataBase.child("sale_details").child(sdt.getUid())
+                                                    .setValue(sdt);
+                                        }
+                                        dismiss();
+                                    }
+                                });
+
+
+
+                    }
+                });
             }
         });
     }

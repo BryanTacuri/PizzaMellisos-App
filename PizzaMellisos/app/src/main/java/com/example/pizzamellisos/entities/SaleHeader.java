@@ -7,7 +7,10 @@ public class SaleHeader {
     private String observation;
 
 
+    public SaleHeader() {
 
+
+    }
     public SaleHeader(String uid) {
         this.uid = uid;
 
