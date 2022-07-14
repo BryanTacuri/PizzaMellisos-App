@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.pizzamellisos.dialogs.DialogAddProductFragment;
 import com.example.pizzamellisos.dialogs.add_sales;
+import com.example.pizzamellisos.dialogs.show_sale_dialog;
 import com.example.pizzamellisos.entities.Product;
 import com.example.pizzamellisos.entities.SaleDetail;
 import com.example.pizzamellisos.entities.SaleDetailForView;
@@ -116,6 +117,20 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
             tbrow.addView(txtTotal);
 
             button_show.setLayoutParams(layoutParams);
+            button_show.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("uiid", sale_header.getUid());
+                    bundle.putString("client", sale_header.getClient());
+                    bundle.putString("observation", sale_header.getObservation());
+                    bundle.putString("total", ""+sale_header.getTotal());
+                    show_sale_dialog sdt=new show_sale_dialog();
+                    sdt.setArguments(bundle);
+                    sdt.show(getSupportFragmentManager(), "DialogShowSale");
+                }
+            });
             layoutParams.rightMargin=15;
             MaterialButton button_edit = new MaterialButton(this);
             button_edit.setBackgroundColor(Color.parseColor("#FF673AB7"));
