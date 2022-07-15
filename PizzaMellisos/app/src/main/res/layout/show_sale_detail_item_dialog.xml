@@ -16,7 +16,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/img_idp_item"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -36,14 +36,15 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txt_npd_item"
+                        android:id="@+id/teView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="TextView" />
+                        android:text="@string/lblProductName"
+                        android:textColor="#FFFFFF" />
 
                     <TextView
-                        android:id="@+id/textView23"
+                        android:id="@+id/txt_npd_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#FFFFFF"
@@ -68,7 +69,9 @@
                                 android:layout_weight="1"
                                 android:background="#2196F3"
                                 android:gravity="center"
-                                android:text="TextView" />
+                                android:text="@string/lblPrecio"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/txt_pdp_item"
@@ -93,7 +96,9 @@
                                 android:layout_weight="1"
                                 android:background="#2196F3"
                                 android:gravity="center"
-                                android:text="TextView" />
+                                android:text="@string/lbl_tbl_cantidad"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/txt_cdp_item"
@@ -118,7 +123,9 @@
                                 android:layout_weight="1"
                                 android:background="#2196F3"
                                 android:gravity="center"
-                                android:text="TextView" />
+                                android:text="@string/lblVentas_tbl_total"
+                                android:textColor="#FFFFFF"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/txt_tdv_item"

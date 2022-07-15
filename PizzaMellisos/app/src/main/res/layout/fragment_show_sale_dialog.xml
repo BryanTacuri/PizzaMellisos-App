@@ -30,7 +30,7 @@
                     android:gravity="center"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:text="TextView"
+                    android:text="@string/lbl_tbl_client"
                     android:textColor="#FFFFFF"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -59,7 +59,7 @@
                     android:gravity="center"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
-                    android:text="TextView"
+                    android:text="@string/lbl_tbl_obs"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -103,7 +103,8 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -111,6 +112,7 @@
                     android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcv_dtl_dialog"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:clipChildren="false"
@@ -122,7 +124,11 @@
                 android:id="@+id/btn_dialog_aceptar_"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:text="@string/btn_back" />
 
         </LinearLayout>
     </ScrollView>

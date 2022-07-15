@@ -21,6 +21,9 @@ public class Product {
     public Product(){
 
     }
+    public Product(String uid){
+        this.uid=uid;
+    }
     public Product(String uid, String url, String nameProduct, String descriptionProduct, double priceProduct) {
         this.url = url;
         this.state="A";

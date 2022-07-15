@@ -9,6 +9,8 @@ public class SaleDetail {
     private double price;
     private double total;
 
+
+    public SaleDetail(){}
     public SaleDetail(String uid, String uidSaleHeader, String uidProduct, int count, double price, double total) {
         this.uid = uid;
         this.uidSaleHeader = uidSaleHeader;

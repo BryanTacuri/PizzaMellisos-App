@@ -29,6 +29,7 @@ import com.example.pizzamellisos.entities.SaleDetail;
 import com.example.pizzamellisos.entities.SaleDetailForView;
 import com.example.pizzamellisos.entities.SaleHeader;
 import com.example.pizzamellisos.entities.SaleHeaderForView;
+import com.example.pizzamellisos.utils.Api;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.color.MaterialColors;
@@ -144,6 +145,16 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
             button_delete.setIcon(ContextCompat.getDrawable(this, R.drawable.ic_delete_f));
             button_delete.setIconPadding(0);
             button_delete.setLayoutParams(layoutParams);
+            Context cv=this;
+            button_delete.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            Api.deleteChild("sales", sale_header.getUid(), cv);
+                        }
+                    }
+            );
 
             button_delete.setIconGravity(MaterialButton.ICON_GRAVITY_TEXT_END);
 

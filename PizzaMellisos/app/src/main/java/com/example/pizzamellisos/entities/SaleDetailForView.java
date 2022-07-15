@@ -9,6 +9,8 @@ public class SaleDetailForView {
     private double price;
     private double total;
 
+
+
     public SaleDetailForView(String uid, Product producto, int count, double price, double total) {
         this.uid = uid;
         this.producto = producto;
