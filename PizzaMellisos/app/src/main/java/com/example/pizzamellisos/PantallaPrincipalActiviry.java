@@ -41,6 +41,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class PantallaPrincipalActiviry extends AppCompatActivity {
     private TextView mostrar;
@@ -146,6 +147,47 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
             button_delete.setIconPadding(0);
             button_delete.setLayoutParams(layoutParams);
             Context cv=this;
+
+            button_edit.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            fbDataBase.child("sale_details").orderByChild("uidSaleHeader")
+                            .equalTo(sale_header.getUid()).addListenerForSingleValueEvent(
+                                            new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    ArrayList<SaleDetailForView> productsList=new ArrayList<>();
+                                                    for (DataSnapshot single: snapshot.getChildren()) {
+
+                                                        SaleDetail sale_detail=single.getValue(SaleDetail.class);
+                                                        productsList.add(new SaleDetailForView(
+                                                                sale_detail.getUid(), new Product(sale_detail.getUidProduct()), sale_detail.getCount(),
+                                                                sale_detail.getPrice(), sale_detail.getTotal()
+                                                        ));
+
+
+
+                                                    }
+                                                    Bundle bundle = new Bundle();
+                                                    bundle.putString("client", sale_header.getClient());
+                                                    bundle.putString("observation", sale_header.getObservation());
+                                                    add_sales dialog=new add_sales(sale_header.getUid(), true, productsList);
+                                                    dialog.setArguments(bundle);
+                                                    dialog.show(getSupportFragmentManager(), "DialogAddSales");
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                                }
+                                            }
+                                    );
+
+                        }
+                    }
+            );
             button_delete.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
@@ -200,47 +242,6 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
                                             sdtFvList
                                     )
                             );
-
-
-                         /*   fbDataBase.child("sale_details")
-                                .equalTo(slh.getUid(), "uidSaleHeader")
-                                        .get().addOnSuccessListener(
-                                new OnSuccessListener<DataSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DataSnapshot dataSnapshotdt) {
-                                        for(DataSnapshot dsdt: dataSnapshotdt.getChildren()){
-                                            SaleDetail sale_detail=dsdt.getValue(SaleDetail.class);
-
-                                            fbDataBase.child("products").child(sale_detail.getUidProduct()).addListenerForSingleValueEvent(
-                                                    new ValueEventListener() {
-                                                        @Override
-                                                        public void onDataChange(@NonNull DataSnapshot snapshotPd) {
-                                                            Product p= snapshotPd.getValue(Product.class);
-
-                                                            sdtFvList.add(new SaleDetailForView(
-                                                                    sale_detail.getUid(),
-                                                                    p,
-                                                                    sale_detail.getCount(),
-                                                                    sale_detail.getPrice(),
-                                                                    sale_detail.getTotal()
-                                                                    ));
-                                                        }
-
-                                                        @Override
-                                                        public void onCancelled(@NonNull DatabaseError error) {
-
-                                                        }
-                                                    }
-                                            );
-
-
-                                        }
-
-
-                                    }
-                                }
-                        );*/
-
                             }
                         }
                         System.out.println(salesHeaderForViewList.size());
@@ -257,7 +258,8 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
 
 
     public void openAddSalesDialog(View v){
-        add_sales dialog=new add_sales();
+        ArrayList<SaleDetailForView> details= new ArrayList<>();
+        add_sales dialog=new add_sales(UUID.randomUUID().toString(), false, details);
         dialog.show(getSupportFragmentManager(), "DialogAddSales");
     }
 

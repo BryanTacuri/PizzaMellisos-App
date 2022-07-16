@@ -55,14 +55,18 @@ public class add_sales extends DialogFragment {
     private Product currentProduct;
     RecyclerView rcv_details_sale;
     ListSaleDetailsAdapter adapter;
+    private boolean isEditing;
 
 
   //  private FirebaseStorage storage;
 
-    public add_sales() {
+    public add_sales(String uuid, boolean isEditing, ArrayList<SaleDetailForView> details) {
         // Required empty public constructor
+        this.isEditing=isEditing;
+        this.details=details;
         this.fbDataBase= FirebaseDatabase.getInstance().getReference();
-        saleHeaderForViews= new SaleHeader(UUID.randomUUID().toString());
+        saleHeaderForViews= new SaleHeader(uuid);
+
 
      //   this.storageReference=FirebaseStorage.getInstance().getReference();
     }
@@ -74,8 +78,6 @@ public class add_sales extends DialogFragment {
         return initDialog();
     }
     private void initSpinner(){
-
-
         fbDataBase.child("products").addValueEventListener(
                 new ValueEventListener() {
                     @Override
@@ -93,7 +95,7 @@ public class add_sales extends DialogFragment {
                                   android.R.layout.simple_dropdown_item_1line, productList );
                            spinnerProducts.setAdapter(adapterProduct);
                        }
-                        //prepareData(productList);
+
                     }
 
                     @Override
@@ -119,13 +121,25 @@ public class add_sales extends DialogFragment {
         initEvents();
         builder.setView(v);
 
+        if(isEditing){
+            prepareDataOnEdit();
+        }
+
 
         return builder.create();
     }
 
     private void prepareData(){
-         adapter= new ListSaleDetailsAdapter(details
+         adapter= new ListSaleDetailsAdapter(details, false
                 );
+        rcv_details_sale.setAdapter(adapter);
+    }
+
+    private void prepareDataOnEdit(){
+        client.setText(getArguments().getString("client"));
+                observation.setText(getArguments().getString("observation"));
+        adapter= new ListSaleDetailsAdapter(details, true
+        );
         rcv_details_sale.setAdapter(adapter);
     }
     private void initEvents(){
@@ -136,6 +150,40 @@ public class add_sales extends DialogFragment {
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        btn_save_sale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String client_=client.getText().toString();
+                String observation_=observation.getText().toString();
+                SaleHeader sale_h= new SaleHeader(UUID.randomUUID().toString());
+
+                ArrayList<SaleDetail> sdtList=new ArrayList<>();
+                double total=0;
+                for (SaleDetailForView sdtv: adapter.getListDetails()) {
+                    total+=sdtv.getTotal();
+                    sdtList.add(new SaleDetail(sdtv.getUid(), sale_h.getUid(), sdtv.getProducto().getUid(), sdtv.getCount(), sdtv.getPrice(), sdtv.getTotal()));
+                }
+                sale_h.setClient(client_);
+                sale_h.setTotal(total);
+                sale_h.setObservation(observation_);
+
+
+                fbDataBase.child("sales").child(sale_h.getUid()).setValue(sale_h)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                for (SaleDetail sdt: sdtList) {
+                                    fbDataBase.child("sale_details").child(sdt.getUid())
+                                            .setValue(sdt);
+                                }
+                                dismiss();
+                            }
+                        });
+
+
 
             }
         });
@@ -155,38 +203,7 @@ public class add_sales extends DialogFragment {
                 );
                 txt_cantidad_sale.setText("");
                 prepareData();
-                btn_save_sale.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String client_=client.getText().toString();
-                        String observation_=observation.getText().toString();
-                        SaleHeader sale_h= new SaleHeader(UUID.randomUUID().toString());
 
-                        ArrayList<SaleDetail> sdtList=new ArrayList<>();
-                        double total=0;
-                        for (SaleDetailForView sdtv: adapter.getListDetails()) {
-                            total+=sdtv.getTotal();
-                            sdtList.add(new SaleDetail(sdtv.getUid(), sale_h.getUid(), sdtv.getProducto().getUid(), sdtv.getCount(), sdtv.getPrice(), sdtv.getTotal()));
-                        }
-                        sale_h.setClient(client_);
-                        sale_h.setTotal(total);
-                        sale_h.setObservation(observation_);
-                        fbDataBase.child("sales").child(sale_h.getUid()).setValue(sale_h)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        for (SaleDetail sdt: sdtList) {
-                                            fbDataBase.child("sale_details").child(sdt.getUid())
-                                                    .setValue(sdt);
-                                        }
-                                        dismiss();
-                                    }
-                                });
-
-
-
-                    }
-                });
             }
         });
     }
