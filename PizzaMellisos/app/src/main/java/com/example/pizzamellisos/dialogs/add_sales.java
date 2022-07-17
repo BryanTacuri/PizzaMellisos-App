@@ -130,15 +130,20 @@ public class add_sales extends DialogFragment {
     }
 
     private void prepareData(){
-         adapter= new ListSaleDetailsAdapter(details, false
+        List<String> removedChilds=new ArrayList<>();
+         adapter= new ListSaleDetailsAdapter(details,removedChilds, false
                 );
         rcv_details_sale.setAdapter(adapter);
     }
 
     private void prepareDataOnEdit(){
+        List<String> removedChilds=new ArrayList<>();
+        if(adapter!=null){
+            removedChilds=adapter.getRemovedChilds();
+        }
         client.setText(getArguments().getString("client"));
                 observation.setText(getArguments().getString("observation"));
-        adapter= new ListSaleDetailsAdapter(details, true
+        adapter= new ListSaleDetailsAdapter(details,removedChilds, true
         );
         rcv_details_sale.setAdapter(adapter);
     }
@@ -159,19 +164,30 @@ public class add_sales extends DialogFragment {
                 String client_=client.getText().toString();
                 String observation_=observation.getText().toString();
                 SaleHeader sale_h= new SaleHeader(UUID.randomUUID().toString());
+                String currentUid=sale_h.getUid();
+                if(isEditing==true) {
+                    currentUid=saleHeaderForViews.getUid();
+                    sale_h.setUid(currentUid);
+                    if(adapter.getRemovedChilds().size()>0){
 
+                        for (String uid: adapter.getRemovedChilds()) {
+                            System.out.println(uid);
+                            fbDataBase.child("sale_details").child(uid).setValue(null);
+                        }
+                    }
+                }
                 ArrayList<SaleDetail> sdtList=new ArrayList<>();
                 double total=0;
                 for (SaleDetailForView sdtv: adapter.getListDetails()) {
                     total+=sdtv.getTotal();
-                    sdtList.add(new SaleDetail(sdtv.getUid(), sale_h.getUid(), sdtv.getProducto().getUid(), sdtv.getCount(), sdtv.getPrice(), sdtv.getTotal()));
+                    sdtList.add(new SaleDetail(sdtv.getUid(), currentUid, sdtv.getProducto().getUid(), sdtv.getCount(), sdtv.getPrice(), sdtv.getTotal()));
                 }
                 sale_h.setClient(client_);
                 sale_h.setTotal(total);
                 sale_h.setObservation(observation_);
 
 
-                fbDataBase.child("sales").child(sale_h.getUid()).setValue(sale_h)
+                fbDataBase.child("sales").child(currentUid).setValue(sale_h)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
@@ -202,7 +218,12 @@ public class add_sales extends DialogFragment {
                       )
                 );
                 txt_cantidad_sale.setText("");
-                prepareData();
+                if(isEditing==true){
+                    prepareDataOnEdit();
+                }else{
+                    prepareData();
+                }
+
 
             }
         });

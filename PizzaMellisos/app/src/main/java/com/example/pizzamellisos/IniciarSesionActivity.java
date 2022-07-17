@@ -46,7 +46,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
     }
         public void login(View view) {
-            /*if ((correo.getText().length() == 0) || (password.getText().length() == 0)) {
+            if ((correo.getText().length() == 0) || (password.getText().length() == 0)) {
                 Toast.makeText(this, "Ingrese todos los campos", Toast.LENGTH_SHORT).show();
 
             } else {
@@ -71,10 +71,10 @@ public class IniciarSesionActivity extends AppCompatActivity {
                                 }
                             }
                         });
-            }*/
-            Intent i = new Intent(getApplicationContext(), PantallaPrincipalActiviry.class);
+            }
+           /* Intent i = new Intent(getApplicationContext(), PantallaPrincipalActiviry.class);
             startActivity(i);
-            finish();
+            finish();*/
         }
         public void onStart() {
             super.onStart();

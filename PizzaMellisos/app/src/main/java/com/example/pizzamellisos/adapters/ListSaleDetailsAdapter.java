@@ -18,21 +18,30 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListSaleDetailsAdapter extends RecyclerView.Adapter<ListSaleDetailsAdapter.DetailViewHolder>{
 
     private final List<SaleDetailForView> listDetails;
+    private final List<String> removedChilds;
     private boolean onEdit;
     private DatabaseReference mDatabase;
+
+    public List<String> getRemovedChilds() {
+        return removedChilds;
+    }
 
     public List<SaleDetailForView> getListDetails() {
         return listDetails;
     }
 
-    public ListSaleDetailsAdapter(List<SaleDetailForView> listDetails, boolean onEdit) {
+    public ListSaleDetailsAdapter(List<SaleDetailForView> listDetails,
+                                  List<String> removedChilds,
+                                  boolean onEdit) {
         this.listDetails = listDetails;
         this.onEdit=onEdit;
+        this.removedChilds=removedChilds;
         mDatabase= FirebaseDatabase.getInstance().getReference();
     }
 
@@ -91,6 +100,7 @@ public class ListSaleDetailsAdapter extends RecyclerView.Adapter<ListSaleDetails
                                                 listDetails.remove(i);
                                                 notifyItemRemoved(i);
                                                 notifyItemRangeChanged(i, listDetails.size());
+                                                removedChilds.add(sale_dt.getUid());
                                             }
                                         });
 
