@@ -46,7 +46,7 @@ public class Producto extends AppCompatActivity {
                         for(DataSnapshot singleSnapshot : snapshot.getChildren()){
 
                             Product p = singleSnapshot.getValue(Product.class);
-                            System.out.println(p.getNameProduct());
+
                             productList.add(p);
                         }
                         prepareData(productList);

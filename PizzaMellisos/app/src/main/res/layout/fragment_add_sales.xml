@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".dialogs.add_sales">
 
     <!-- TODO: Update blank fragment layout -->
@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:text="@string/hello_blank_fragment" />
+            android:text="@string/app_name" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="@string/lbl_tbl_client" />
 
             <EditText
                 android:id="@+id/txt_sales_client"
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="@string/lblProductDescription" />
 
             <EditText
                 android:id="@+id/txt_sales_observacion"
@@ -69,19 +69,23 @@
             android:layout_height="15dp"
             android:layout_marginTop="10dp"
             android:background="#673AB7"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical">
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
             <TextView
                 android:id="@+id/txtProductsSale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="@string/lblInfoDialog" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,7 +107,7 @@
                     android:inputType="numberDecimal" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/btn_add_sale_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -113,6 +117,24 @@
                     app:iconGravity="textEnd"
                     app:iconPadding="0dp" />
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_details_sale"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintHeight_max="300dp"
+                tools:itemCount="5"
+                tools:listitem="@layout/detail_item_sale">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/btn_save_sale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
         </LinearLayout>
     </LinearLayout>
 
