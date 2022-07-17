@@ -7,9 +7,26 @@ public class Product {
     private String nameProduct;
     private String descriptionProduct;
     private double priceProduct;
+    private String state;
 
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+
+    public Product(){
+
+    }
+    public Product(String uid){
+        this.uid=uid;
+    }
     public Product(String uid, String url, String nameProduct, String descriptionProduct, double priceProduct) {
         this.url = url;
+        this.state="A";
         this.nameProduct = nameProduct;
         this.descriptionProduct = descriptionProduct;
         this.priceProduct = priceProduct;
@@ -57,4 +74,8 @@ public class Product {
     }
 
 
+    @Override
+    public String toString() {
+        return this.nameProduct +"- $"+this.priceProduct;
+    }
 }

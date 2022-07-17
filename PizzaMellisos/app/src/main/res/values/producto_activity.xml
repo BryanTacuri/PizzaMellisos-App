@@ -10,6 +10,9 @@
     <string name="lblPrecio">Precio</string>
     <string name="btnClose">x</string>
     <string name="lblInfoDialog">Ingrese La Información</string>
+    <string name="btnEditar">Editar</string>
+    <string name="btnDelete">Eliminar</string>
+
 
 
 

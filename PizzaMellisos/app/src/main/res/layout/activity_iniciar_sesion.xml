@@ -6,78 +6,87 @@
     android:layout_height="match_parent"
     tools:context=".IniciarSesionActivity">
 
-    <LinearLayout
-        android:layout_width="348dp"
-        android:layout_height="634dp"
-        android:orientation="vertical"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView3"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="GRUPO #1"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            app:srcCompat="@drawable/logo" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="51dp"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:text="LOGIN"
-            android:textColor="#E15A38"
-            android:textSize="24sp" />
+            android:orientation="vertical"
+            android:padding="15dp">
 
-        <EditText
-            android:id="@+id/btnCorreoLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Correo"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="GRUPO #1"
+                android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/btnPasswordLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:gravity="center"
+                android:text="LOGIN"
+                android:textColor="#E15A38"
+                android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="login"
-            android:text="@string/btn_lgin"
-            app:backgroundTint="#66BB6A" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                app:srcCompat="@drawable/logo" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="cancelar"
-            android:text="@string/btn_salir"
-            app:backgroundTint="#E53935" />
+            <EditText
+                android:id="@+id/btnCorreoLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Correo"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
 
-        <CheckBox
-            android:id="@+id/checkSesionActiva"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:text="Mantener Sesión Activa" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/btnPasswordLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <CheckBox
+                android:id="@+id/checkSesionActiva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="Mantener Sesión Activa" />
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="login"
+                android:text="@string/btn_lgin"
+                app:backgroundTint="#66BB6A" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="cancelar"
+                android:text="@string/btn_salir"
+                app:backgroundTint="#E53935" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

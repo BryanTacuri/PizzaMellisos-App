@@ -72,6 +72,9 @@ public class IniciarSesionActivity extends AppCompatActivity {
                             }
                         });
             }
+           /* Intent i = new Intent(getApplicationContext(), PantallaPrincipalActiviry.class);
+            startActivity(i);
+            finish();*/
         }
         public void onStart() {
             super.onStart();
