@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_promotion">Mis promociones</string>
+    <string name="add_promotion">Añadir promoción</string>
+    <string name="text_name_promotion">Nombre</string>
+    <string name="text_products_promotion">Productos</string>
+    <string name="text_discount_promotion">Descuento</string>
+    <string name="text_price_promotion">Precio</string>
+    <string name="text_date_start_promotion">Fecha de inicio</string>
+    <string name="text_date_end_promotion">Fecha de finalización</string>
+</resources>

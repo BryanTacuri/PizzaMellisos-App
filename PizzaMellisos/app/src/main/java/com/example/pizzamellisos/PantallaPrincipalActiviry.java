@@ -25,6 +25,7 @@ import com.example.pizzamellisos.dialogs.DialogAddProductFragment;
 import com.example.pizzamellisos.dialogs.add_sales;
 import com.example.pizzamellisos.dialogs.show_sale_dialog;
 import com.example.pizzamellisos.entities.Product;
+import com.example.pizzamellisos.entities.Promotion;
 import com.example.pizzamellisos.entities.SaleDetail;
 import com.example.pizzamellisos.entities.SaleDetailForView;
 import com.example.pizzamellisos.entities.SaleHeader;
@@ -290,6 +291,10 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
             case R.id.opt_about_us:
                 this.goToAboutUsActivity();
                 break;
+            case R.id.opt_add_promotion:
+                Intent prom = new Intent(getApplicationContext(), Promocion.class);
+                this.goToActivity(prom);
+                break;
             default:
                 Toast.makeText(this, item.getTitle(), Toast.LENGTH_LONG).show();
                 break;
@@ -310,8 +315,6 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
         editor.apply();
         Intent i = new Intent(getApplicationContext(), IniciarSesionActivity.class);
         startActivity(i);
-
-
         finish();
     }
 }

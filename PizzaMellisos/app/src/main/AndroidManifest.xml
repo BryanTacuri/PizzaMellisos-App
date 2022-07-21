@@ -22,6 +22,9 @@
             android:name=".Producto"
             android:exported="false" />
         <activity
+            android:name=".Promocion"
+            android:exported="false" />
+        <activity
             android:name=".AboutUs"
             android:exported="false" />
         <activity
