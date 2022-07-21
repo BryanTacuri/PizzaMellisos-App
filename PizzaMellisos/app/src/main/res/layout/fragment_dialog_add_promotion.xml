@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".dialogs.DialogPromotionFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#3F51B5"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/add_promotion"
+                    android:textColor="#DFD9D9"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_close_dialog_promotion"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="44dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btnClose"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#B5251A" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="335dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/img_promotion"
+                        android:layout_width="155dp"
+                        android:layout_height="146dp"
+                        android:layout_weight="1"
+                        tools:src="@tools:sample/avatars" />
+
+                    <Button
+                        android:id="@+id/btn_img_promotion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="3dp"
+                        android:layout_weight="1"
+                        android:text="Añadir imagen" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_name_promotion" />
+
+                    <EditText
+                        android:id="@+id/txt_name_promotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_products_promotion" />
+
+                    <EditText
+                        android:id="@+id/txt_products_promotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_discount_promotion" />
+
+                    <EditText
+                        android:id="@+id/txt_discount_promotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/text_price_promotion" />
+
+                    <EditText
+                        android:id="@+id/text_price_promotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_add_promotion_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_promotion" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
