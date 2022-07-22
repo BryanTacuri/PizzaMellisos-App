@@ -60,6 +60,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
                                        guardarSesion(checkGuardarSesion.isChecked(), correo.getText().toString(),
                                                password.getText().toString());
                                     }
+                                    guardarDataUser(user.getUid());
                                     Intent i = new Intent(getApplicationContext(), PantallaPrincipalActiviry.class);
                                     startActivity(i);
                                     finish();
@@ -88,12 +89,17 @@ public class IniciarSesionActivity extends AppCompatActivity {
         editor.putString("nombre", nombre);
         editor.putString("clave", clave);
         editor.apply();
+
+
     }
 
-        public void cancelar(View view){
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(i);
-        }
+    private void  guardarDataUser(String id){
+        SharedPreferences pr= getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor  edit = pr.edit();
+        edit.putString("id", id);
+        edit.commit();
+    }
 
 
 

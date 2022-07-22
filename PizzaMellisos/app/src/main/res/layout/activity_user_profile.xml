@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserProfile">
+    tools:context=".user.UserProfile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,6 +161,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtNombreUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFEFE"
@@ -177,6 +178,7 @@
                 android:hint="Apellido">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtApellidoUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFEFE"
@@ -190,9 +192,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:hint="Password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/updatePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#66BB6A"
+                    android:drawableLeft="@drawable/common_google_signin_btn_icon_dark_focused"
+                    android:drawablePadding="10dp"
+                    android:text="" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:hint="Edad">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtEdadUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#66BB6A"
@@ -210,6 +232,7 @@
                 android:hint="Telefonp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPhoneUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFEFE"
@@ -251,6 +274,7 @@
             </RadioGroup>
 
             <Button
+                android:id="@+id/btnUpdateUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#66BB6A"
@@ -258,6 +282,14 @@
                 android:text="Editar">
 
             </Button>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="cancelar"
+                android:text="@string/btn_salir"
+                app:backgroundTint="#E53935" />
 
 
         </LinearLayout>
