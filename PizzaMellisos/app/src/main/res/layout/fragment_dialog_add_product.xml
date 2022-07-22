@@ -19,7 +19,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#3F51B5"
+                android:background="@color/colorPrimary"
                 android:gravity="right"
                 android:orientation="horizontal">
 
@@ -62,7 +62,7 @@
 
                     <ImageView
                         android:id="@+id/img_product"
-                        android:layout_width="match_parent"
+                        android:layout_width="144dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         tools:src="@tools:sample/avatars" />
@@ -70,9 +70,9 @@
                     <Button
                         android:id="@+id/btn_img_product"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="111dp"
                         android:layout_weight="1"
-                        android:text="Button"
+                        android:text="Agregar imagen"
                         app:backgroundTint="#FF9800" />
 
                 </LinearLayout>
@@ -93,7 +93,7 @@
                         android:text="@string/lblProductName" />
 
                     <EditText
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="sans-serif"
 
                         android:id="@+id/txtNameProduct"
                         android:layout_width="match_parent"
@@ -112,7 +112,7 @@
                         android:text="@string/lblProductDescription" />
 
                     <EditText
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="sans-serif"
 
                         android:id="@+id/txtDescriptionProduct"
                         android:layout_width="match_parent"

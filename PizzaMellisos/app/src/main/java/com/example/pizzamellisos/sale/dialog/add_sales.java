@@ -215,6 +215,7 @@ public class add_sales extends DialogFragment {
                 if(isEditing==true){
                     prepareDataOnEdit();
                 }else{
+                    //btn_save_sale.setEnabled(true);
                     prepareData();
                 }
 

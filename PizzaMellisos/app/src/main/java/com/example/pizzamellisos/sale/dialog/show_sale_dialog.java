@@ -76,7 +76,6 @@ public class show_sale_dialog extends DialogFragment {
     }
 
     private void generateViewList(){
-        System.out.println("eeeeeeeeeeeeeee");
         ListSaleDetailFotDialogAdapter adapter= new ListSaleDetailFotDialogAdapter( productsList
                 );
         rcv_dtl_dialog.setAdapter(adapter);
