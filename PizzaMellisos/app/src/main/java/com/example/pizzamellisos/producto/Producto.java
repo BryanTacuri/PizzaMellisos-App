@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.pizzamellisos.R;
-import com.example.pizzamellisos.adapters.ListProductAdapter;
+import com.example.pizzamellisos.producto.adapters.ListProductAdapter;
 import com.example.pizzamellisos.producto.dialog.DialogAddProductFragment;
 import com.example.pizzamellisos.entities.Product;
 import com.google.firebase.database.DataSnapshot;

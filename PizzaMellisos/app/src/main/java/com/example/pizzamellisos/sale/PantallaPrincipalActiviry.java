@@ -21,7 +21,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pizzamellisos.AboutUs;
+import com.example.pizzamellisos.about_us.AboutUs;
 import com.example.pizzamellisos.IniciarSesionActivity;
 import com.example.pizzamellisos.Promocion;
 import com.example.pizzamellisos.R;

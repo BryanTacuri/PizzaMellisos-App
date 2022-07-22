@@ -1,4 +1,4 @@
-package com.example.pizzamellisos.adapters;
+package com.example.pizzamellisos.sale.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.pizzamellisos.R;
 import com.example.pizzamellisos.entities.Product;
 import com.example.pizzamellisos.entities.SaleDetailForView;
-import com.example.pizzamellisos.utils.DownloadImage;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ListSaleDetailsAdapter extends RecyclerView.Adapter<ListSaleDetailsAdapter.DetailViewHolder>{

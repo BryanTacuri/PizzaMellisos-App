@@ -1,4 +1,4 @@
-package com.example.pizzamellisos;
+package com.example.pizzamellisos.about_us;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.pizzamellisos.adapters.ListDevelopersAdapter;
+import com.example.pizzamellisos.IniciarSesionActivity;
+import com.example.pizzamellisos.R;
+import com.example.pizzamellisos.about_us.adapters.ListDevelopersAdapter;
 import com.example.pizzamellisos.entities.Developers;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

@@ -1,4 +1,4 @@
-package com.example.pizzamellisos.adapters;
+package com.example.pizzamellisos.producto.adapters;
 
 import android.content.Context;
 import android.os.Bundle;

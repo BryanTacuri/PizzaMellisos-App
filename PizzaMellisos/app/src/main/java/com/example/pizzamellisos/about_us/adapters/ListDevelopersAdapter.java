@@ -1,4 +1,4 @@
-package com.example.pizzamellisos.adapters;
+package com.example.pizzamellisos.about_us.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;

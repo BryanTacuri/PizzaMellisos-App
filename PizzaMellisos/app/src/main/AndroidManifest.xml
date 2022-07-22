@@ -25,7 +25,7 @@
             android:name=".Promocion"
             android:exported="false" />
         <activity
-            android:name=".AboutUs"
+            android:name=".about_us.AboutUs"
             android:exported="false" />
         <activity
             android:name=".sale.PantallaPrincipalActiviry"
