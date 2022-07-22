@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".dialogs.show_sale_dialog">
+    tools:context=".sale.dialog.show_sale_dialog">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView

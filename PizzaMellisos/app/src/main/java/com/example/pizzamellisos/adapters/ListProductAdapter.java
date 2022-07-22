@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.pizzamellisos.R;
-import com.example.pizzamellisos.dialogs.DialogAddProductFragment;
-import com.example.pizzamellisos.entities.Developers;
+import com.example.pizzamellisos.producto.dialog.DialogAddProductFragment;
 import com.example.pizzamellisos.entities.Product;
 import com.example.pizzamellisos.utils.Api;
 import com.example.pizzamellisos.utils.DownloadImage;

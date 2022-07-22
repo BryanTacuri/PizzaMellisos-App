@@ -1,4 +1,4 @@
-package com.example.pizzamellisos.dialogs;
+package com.example.pizzamellisos.sale.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

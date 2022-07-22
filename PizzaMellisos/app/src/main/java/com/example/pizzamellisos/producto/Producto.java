@@ -1,4 +1,4 @@
-package com.example.pizzamellisos;
+package com.example.pizzamellisos.producto;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,12 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.pizzamellisos.adapters.ListDevelopersAdapter;
+import com.example.pizzamellisos.R;
 import com.example.pizzamellisos.adapters.ListProductAdapter;
-import com.example.pizzamellisos.dialogs.DialogAddProductFragment;
-import com.example.pizzamellisos.entities.Developers;
+import com.example.pizzamellisos.producto.dialog.DialogAddProductFragment;
 import com.example.pizzamellisos.entities.Product;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

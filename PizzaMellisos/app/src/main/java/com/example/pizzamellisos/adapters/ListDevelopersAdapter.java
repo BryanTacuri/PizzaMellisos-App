@@ -1,20 +1,15 @@
 package com.example.pizzamellisos.adapters;
 
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pizzamellisos.R;
-import com.example.pizzamellisos.dialogs.DialogAddProductFragment;
 import com.example.pizzamellisos.entities.Developers;
 import com.example.pizzamellisos.utils.DownloadImage;
 

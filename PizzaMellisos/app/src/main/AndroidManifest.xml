@@ -19,7 +19,7 @@
             android:name=".UserProfile"
             android:exported="false" />
         <activity
-            android:name=".Producto"
+            android:name=".producto.Producto"
             android:exported="false" />
         <activity
             android:name=".Promocion"
@@ -28,7 +28,7 @@
             android:name=".AboutUs"
             android:exported="false" />
         <activity
-            android:name=".PantallaPrincipalActiviry"
+            android:name=".sale.PantallaPrincipalActiviry"
             android:exported="false" />
         <activity
             android:name=".RegistrarseActivity"
