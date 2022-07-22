@@ -1,4 +1,4 @@
-package com.example.pizzamellisos;
+package com.example.pizzamellisos.sale;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,14 +20,19 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.pizzamellisos.R;
 
-import com.example.pizzamellisos.dialogs.add_sales;
-import com.example.pizzamellisos.dialogs.show_sale_dialog;
+import com.example.pizzamellisos.IniciarSesionActivity;
+import com.example.pizzamellisos.about_us.AboutUs;
 import com.example.pizzamellisos.entities.Product;
 import com.example.pizzamellisos.entities.SaleDetail;
 import com.example.pizzamellisos.entities.SaleDetailForView;
 import com.example.pizzamellisos.entities.SaleHeader;
 import com.example.pizzamellisos.entities.SaleHeaderForView;
+import com.example.pizzamellisos.producto.Producto;
+import com.example.pizzamellisos.promotion.Promocion;
+import com.example.pizzamellisos.sale.dialog.add_sales;
+import com.example.pizzamellisos.sale.dialog.show_sale_dialog;
 import com.example.pizzamellisos.user.UserProfile;
 import com.example.pizzamellisos.utils.Api;
 import com.google.android.material.button.MaterialButton;
@@ -59,9 +64,6 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
         btnAddSales = findViewById(R.id.btn_add_sales);
         salesHeaderForViewList=new ArrayList<>();
         tbtlout=findViewById(R.id.tbl_row_sales);
-       // mostrar = (TextView)findViewById(R.id.textMostrar);
-        //String sms = getIntent().getStringExtra("sms");
-    //    mostrar.setText(sms);
 
         preferences = getSharedPreferences("sesiones", Context.MODE_PRIVATE);
         editor = preferences.edit();
@@ -83,7 +85,6 @@ public class PantallaPrincipalActiviry extends AppCompatActivity {
            // TextView tv0 = new TextView(this);
             TableRow.LayoutParams layoutParams= new TableRow.LayoutParams();
             layoutParams.weight=1;
-           // layoutParams.width="wrap_content"
 
            // tv0.setGravity(Gravity.CENTER);
            // tv0.setLayoutParams(layoutParams);
