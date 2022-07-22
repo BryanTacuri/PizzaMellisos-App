@@ -24,6 +24,8 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="sans-serif-black"
+
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +72,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Button" />
+                        android:text="Button"
+                        app:backgroundTint="#FF9800" />
 
                 </LinearLayout>
 
@@ -81,6 +84,8 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:fontFamily="sans-serif-black"
+
                         android:id="@+id/textView10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -88,6 +93,8 @@
                         android:text="@string/lblProductName" />
 
                     <EditText
+                        android:fontFamily="sans-serif-black"
+
                         android:id="@+id/txtNameProduct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -96,6 +103,8 @@
                         android:inputType="textPersonName" />
 
                     <TextView
+                        android:fontFamily="sans-serif-black"
+
                         android:id="@+id/textView11"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -103,6 +112,8 @@
                         android:text="@string/lblProductDescription" />
 
                     <EditText
+                        android:fontFamily="sans-serif-black"
+
                         android:id="@+id/txtDescriptionProduct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -129,10 +140,13 @@
             </LinearLayout>
 
             <Button
+                android:fontFamily="sans-serif-black"
+
                 android:id="@+id/btn_add_prduct_dialog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_agregar" />
+                android:text="@string/btn_agregar"
+                app:backgroundTint="#FF9800" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

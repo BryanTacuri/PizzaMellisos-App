@@ -30,7 +30,7 @@
                     android:id="@+id/txt_card_product_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#3F51B5"
+                    android:background="@color/colorPrimary"
                     android:padding="10dp"
                     android:text="TextView"
                     android:textColor="#FFFFFF"
@@ -78,6 +78,8 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:fontFamily="sans-serif-black"
+
                             android:id="@+id/btn_update_item_product"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -86,6 +88,8 @@
                             app:backgroundTint="#FF9800" />
 
                         <Button
+                            android:fontFamily="sans-serif-black"
+
                             android:id="@+id/btn_delete_item_product"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

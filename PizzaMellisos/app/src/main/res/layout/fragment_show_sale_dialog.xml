@@ -27,6 +27,7 @@
                     android:id="@+id/textView17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
@@ -92,6 +93,8 @@
                     app:cardUseCompatPadding="true">
 
                     <TextView
+                        android:fontFamily="sans-serif-black"
+
                         android:id="@+id/txt_dialog_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -121,6 +124,8 @@
             </ScrollView>
 
             <Button
+                android:fontFamily="sans-serif-black"
+
                 android:id="@+id/btn_dialog_aceptar_"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -13,6 +13,8 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="sans-serif-black"
+android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
@@ -24,6 +26,8 @@
             android:orientation="horizontal">
 
             <TextView
+                android:fontFamily="sans-serif-black"
+
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,6 +52,8 @@
             android:orientation="horizontal">
 
             <TextView
+                android:fontFamily="sans-serif-black"
+
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,6 +61,7 @@
                 android:text="@string/lblProductDescription" />
 
             <EditText
+
                 android:id="@+id/txt_sales_observacion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -81,6 +88,8 @@
             android:paddingRight="10dp">
 
             <TextView
+                android:fontFamily="sans-serif-black"
+
                 android:id="@+id/txtProductsSale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,6 +108,8 @@
                     android:layout_weight="1" />
 
                 <EditText
+                    android:fontFamily="sans-serif-black"
+
                     android:id="@+id/txt_cantidad_sale"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -112,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:padding="5dp"
-                    app:backgroundTint="#4CAF50"
+                    app:backgroundTint="#FF9800"
                     app:icon="@android:drawable/ic_input_add"
                     app:iconGravity="textEnd"
                     app:iconPadding="0dp" />
@@ -133,7 +144,8 @@
                 android:id="@+id/btn_save_sale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="Button"
+                app:backgroundTint="#FF9800" />
 
         </LinearLayout>
     </LinearLayout>

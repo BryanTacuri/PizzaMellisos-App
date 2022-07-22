@@ -36,14 +36,19 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/teView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
                         android:gravity="center"
                         android:text="@string/lblProductName"
                         android:textColor="#FFFFFF" />
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/txt_npd_item"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -63,6 +68,8 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:fontFamily="sans-serif"
+
                                 android:id="@+id/textView25"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -74,6 +81,8 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:fontFamily="sans-serif"
+
                                 android:id="@+id/txt_pdp_item"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -90,6 +99,8 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:fontFamily="sans-serif"
+
                                 android:id="@+id/textView26"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -101,6 +112,8 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:fontFamily="sans-serif"
+
                                 android:id="@+id/txt_cdp_item"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -117,6 +130,8 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:fontFamily="sans-serif"
+
                                 android:id="@+id/textView27"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -128,6 +143,8 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:fontFamily="sans-serif"
+
                                 android:id="@+id/txt_tdv_item"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

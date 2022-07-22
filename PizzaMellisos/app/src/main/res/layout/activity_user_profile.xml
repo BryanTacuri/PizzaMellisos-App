@@ -19,14 +19,7 @@
             android:background="#ffae6a"
             android:padding="20dp">
 
-            <ImageView
-                android:id="@+id/profile_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/beta_profile_background" />
-
-                <TextView
+            <TextView
                     android:id="@+id/full_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -69,6 +62,8 @@
 
 
             <EditText
+                android:fontFamily="sans-serif"
+
                 android:id="@+id/txtNombreRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,6 +74,8 @@
                 tools:ignore="TouchTargetSizeCheck" />
 
             <EditText
+                android:fontFamily="sans-serif"
+
                 android:id="@+id/txtApellidoRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,6 +84,8 @@
                 android:inputType="textPersonName" />
 
             <EditText
+                android:fontFamily="sans-serif"
+
                 android:id="@+id/txtCorreoUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,6 +94,8 @@
                 android:inputType="textPersonName"
                 android:minHeight="48dp" />
             <EditText
+                android:fontFamily="sans-serif"
+
                 android:id="@+id/txtEdadRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,6 +104,8 @@
                 android:inputType="number" />
 
             <EditText
+                android:fontFamily="sans-serif"
+
                 android:id="@+id/editTextPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,11 +114,13 @@
                 android:inputType="phone" />
 
             <Spinner
-                android:id="@+id/spinnerCiudad"
+                android:id="@+id/spinnerCiudadd"
                 android:layout_width="match_parent"
                 android:layout_height="41dp" />
 
             <TextView
+                android:fontFamily="sans-serif"
+
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -141,21 +146,37 @@
                     android:text="@string/rb2" />
             </RadioGroup>
 
+            <EditText
+                android:id="@+id/txtPassword"
+                android:fontFamily="sans-serif"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
 
 
 
 
 
         </LinearLayout>
-            <Button
-                android:id="@+id/btnUpdateUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#66BB6A"
-                android:fontFamily="sans-serif-black"
-                android:text="Editar">
 
-            </Button>
+        <Button
+            android:id="@+id/btnUpdateUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF9800"
+            android:backgroundTint="#66BB6A"
+            android:fontFamily="sans-serif-black"
+            android:onClick="editarUsuario"
+            android:text="Editar"
+            app:backgroundTint="#FF9800">
+
+        </Button>
 
             <Button
                 android:id="@+id/button"

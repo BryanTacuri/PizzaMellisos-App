@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.pizzamellisos.IniciarSesionActivity;
+import com.example.pizzamellisos.PantallaPrincipalActiviry;
 import com.example.pizzamellisos.R;
 import com.example.pizzamellisos.entities.Product;
 import com.example.pizzamellisos.entities.SaleDetailForView;
@@ -34,8 +37,11 @@ public class UserProfile extends AppCompatActivity {
     private EditText correo, password, nombre, apellido, edad, telefono;
     private RadioButton rbmasculino, rbfemenino;
     private RadioGroup radioGroup;
+    private String seleccion;
+
     private String llave = "credenciales";
     String idUseer;
+    DatabaseReference reference;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
@@ -45,6 +51,7 @@ public class UserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+        reference = FirebaseDatabase.getInstance().getReference("Users");
         mAuth = FirebaseAuth.getInstance();
         nombre = findViewById(R.id.txtNombreRegister);
         apellido = findViewById(R.id.txtApellidoRegister);
@@ -52,8 +59,8 @@ public class UserProfile extends AppCompatActivity {
         telefono = findViewById(R.id.editTextPhone);
         correo = findViewById(R.id.txtCorreoUser);
 
-        password = findViewById(R.id.btnPasswordLogin);
-        spinnerCiudad = findViewById(R.id.spinnerCiudad);
+        password = findViewById(R.id.txtPassword);
+        spinnerCiudad = findViewById(R.id.spinnerCiudadd);
         rbmasculino = findViewById(R.id.rbMasculino);
         rbfemenino = findViewById(R.id.rbFemenino);
         radioGroup = findViewById(R.id.radioSexo);
@@ -91,20 +98,40 @@ public class UserProfile extends AppCompatActivity {
                     String name = snapshot.child(idUseer).child("nombre").getValue(String.class);
                     String apellid = snapshot.child(idUseer).child("apellido").getValue(String.class);
                     String corr = snapshot.child(idUseer).child("correo").getValue(String.class);
-                    String ciud = snapshot.child(idUseer).child("ciudad").getValue(String.class);
-                    String eda = snapshot.child(idUseer).child("edad").getValue(String.class);
-                    String pass = snapshot.child(idUseer).child("password").getValue(String.class);
-                    String sex = snapshot.child(idUseer).child("sexo").getValue(String.class);
+                   String ciud = snapshot.child(idUseer).child("ciudad").getValue(String.class);
+                     String eda = snapshot.child(idUseer).child("edad").getValue(String.class);
                     String tel = snapshot.child(idUseer).child("telefono").getValue(String.class);
+
+
+                    String pass = snapshot.child(idUseer).child("password").getValue(String.class);
+
+                String sex = snapshot.child(idUseer).child("sexo").getValue(String.class);
+                      if(sex.equals("Masculino")){
+                        rbmasculino.setChecked(true);
+                    }else{
+                        rbfemenino.setChecked(true);
+                    }
+
+                    if(ciud.equals("Quito") ){
+                        spinnerCiudad.setSelection(2);
+                    }
+
+                    if(ciud.equals("Guayaquil") ){
+                        spinnerCiudad.setSelection(1);
+                    }else if(ciud.equals("Cuenca") ){
+                        spinnerCiudad.setSelection(3);
+                    }else{
+                        spinnerCiudad.setSelection(2);
+                    }
+
 
                     nombre.setText(name);
                     apellido.setText(apellid);
-                    apellido.setText(apellid);
-                    apellido.setText(apellid);
-                    apellido.setText(apellid);
-                    apellido.setText(apellid);
-                    apellido.setText(apellid);
-                    apellido.setText(apellid);
+                    correo.setText(corr);
+                   edad.setText(eda);
+                    password.setText(pass);
+                     telefono.setText(tel);
+
 
                 }
             }
@@ -116,5 +143,33 @@ public class UserProfile extends AppCompatActivity {
         });
 
 
+    }
+
+    public void cancelar(View view){
+        Intent i = new Intent(getApplicationContext(), PantallaPrincipalActiviry.class);
+        startActivity(i);
+
+    }
+
+
+    public void editarUsuario(View view){
+        seleccion = spinnerCiudad.getSelectedItem().toString();
+        mAuth = FirebaseAuth.getInstance();
+        idUseer = mAuth.getCurrentUser().getUid();
+        reference.child(idUseer).child("nombre").setValue(nombre.getText().toString());
+        reference.child(idUseer).child("apellido").setValue(apellido.getText().toString());
+        reference.child(idUseer).child("edad").setValue(edad.getText().toString());
+        reference.child(idUseer).child("telefono").setValue(telefono.getText().toString());
+        reference.child(idUseer).child("ciudad").setValue(seleccion.toString());
+
+        if(rbmasculino.isChecked()){
+            reference.child(idUseer).child("sexo").setValue(rbmasculino.getText().toString());
+        }else{
+            reference.child(idUseer).child("sexo").setValue( rbfemenino.getText().toString());
+        }
+        reference.child(idUseer).child("correo").setValue(correo.getText().toString());
+        reference.child(idUseer).child("password").setValue(password.getText().toString());
+
+        Toast.makeText(this, "Usuario actualizado correctamente", Toast.LENGTH_SHORT).show();
     }
 }

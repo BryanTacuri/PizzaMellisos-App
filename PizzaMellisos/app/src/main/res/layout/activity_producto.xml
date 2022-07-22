@@ -18,6 +18,8 @@
             android:orientation="vertical">
 
             <TextView
+                android:fontFamily="sans-serif"
+
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,11 +37,14 @@
                 android:padding="5dp">
 
                 <Button
+                    android:fontFamily="sans-serif-black"
+
                     android:id="@+id/btn_add_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="opendialog"
-                    android:text="@string/btn_agregar" />
+                    android:text="@string/btn_agregar"
+                    app:backgroundTint="#FF9800" />
             </LinearLayout>
 
             <LinearLayout

@@ -22,16 +22,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#673AB7"
+                android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
                 <TextView
+                    android:fontFamily="sans-serif"
+
                     android:id="@+id/dev_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:text="TextView"
                     android:textColor="#FBFBFB"
@@ -63,6 +66,8 @@
                     android:paddingLeft="5dp">
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/dev_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -70,6 +75,8 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/dev_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -77,6 +84,8 @@
                         android:textSize="18sp" />
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/dev_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
