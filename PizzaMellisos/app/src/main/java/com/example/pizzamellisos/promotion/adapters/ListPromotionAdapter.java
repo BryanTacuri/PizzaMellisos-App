@@ -1,4 +1,4 @@
-package com.example.pizzamellisos.adapters;
+package com.example.pizzamellisos.promotion.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pizzamellisos.R;
-import com.example.pizzamellisos.dialogs.DialogPromotionFragment;
+import com.example.pizzamellisos.promotion.dialogs.DialogPromotionFragment;
 import com.example.pizzamellisos.entities.Promotion;
 import com.example.pizzamellisos.utils.Api;
 import com.example.pizzamellisos.utils.DownloadImage;

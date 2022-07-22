@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import com.example.pizzamellisos.about_us.AboutUs;
 import com.example.pizzamellisos.IniciarSesionActivity;
-import com.example.pizzamellisos.Promocion;
+import com.example.pizzamellisos.promotion.Promocion;
 import com.example.pizzamellisos.R;
 import com.example.pizzamellisos.UserProfile;
 import com.example.pizzamellisos.sale.dialog.add_sales;

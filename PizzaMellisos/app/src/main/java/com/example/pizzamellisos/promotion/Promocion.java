@@ -1,4 +1,4 @@
-package com.example.pizzamellisos;
+package com.example.pizzamellisos.promotion;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pizzamellisos.adapters.ListPromotionAdapter;
-import com.example.pizzamellisos.dialogs.DialogPromotionFragment;
+import com.example.pizzamellisos.R;
+import com.example.pizzamellisos.promotion.adapters.ListPromotionAdapter;
+import com.example.pizzamellisos.promotion.dialogs.DialogPromotionFragment;
 import com.example.pizzamellisos.entities.Promotion;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
