@@ -28,6 +28,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
     private CheckBox checkGuardarSesion;
     SharedPreferences preferences;
+    SharedPreferences pre;
     SharedPreferences.Editor editor;
     private String llave = "sesion";
     @Override
@@ -43,6 +44,12 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("sesiones", Context.MODE_PRIVATE);
         editor = preferences.edit();
+
+
+        if(revisarSesion()){
+            Intent i = new Intent(this, PantallaPrincipalActiviry.class);
+            startActivity(i);
+        }
 
     }
         public void login(View view) {
@@ -60,6 +67,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
                                        guardarSesion(checkGuardarSesion.isChecked(), correo.getText().toString(),
                                                password.getText().toString());
                                     }
+                                    guardarDataUser(user.getUid());
                                     Intent i = new Intent(getApplicationContext(), PantallaPrincipalActiviry.class);
                                     startActivity(i);
                                     finish();
@@ -88,13 +96,22 @@ public class IniciarSesionActivity extends AppCompatActivity {
         editor.putString("nombre", nombre);
         editor.putString("clave", clave);
         editor.apply();
+
+
     }
 
-        public void cancelar(View view){
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(i);
-        }
+    private void  guardarDataUser(String id){
+        pre = getSharedPreferences("credenciales", Context.MODE_PRIVATE);
 
+        SharedPreferences.Editor  edit = pre.edit();
+        edit.putString("id", id);
+        edit.apply();
+    }
+
+
+    public boolean revisarSesion(){
+        return this.preferences.getBoolean(llave, false);
+    }
 
 
     }

@@ -10,6 +10,8 @@
         android:orientation="horizontal">
 
         <TextView
+            android:fontFamily="sans-serif-black"
+
             android:id="@+id/txt_count_sdt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -17,6 +19,8 @@
             android:text="TextView" />
 
         <TextView
+            android:fontFamily="sans-serif-black"
+
             android:id="@+id/txt_namep_sdt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,6 +28,8 @@
             android:text="TextView" />
 
         <TextView
+            android:fontFamily="sans-serif-black"
+
             android:id="@+id/txt_price_sdt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,6 +37,8 @@
             android:text="TextView" />
 
         <TextView
+            android:fontFamily="sans-serif-black"
+
             android:id="@+id/txt_tsub_otal_sdt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,9 +50,9 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:backgroundTint="#9C27B0"
+            app:backgroundTint="#E53935"
             app:icon="@android:drawable/ic_delete"
             app:iconGravity="textEnd"
-            app:iconTint="#673AB7" />
+            app:iconTint="#E53935" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

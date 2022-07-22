@@ -26,10 +26,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:fontFamily="sans-serif-black"
+
                     android:id="@+id/txt_name_promotion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#3F51B5"
+                    android:background="@color/colorPrimary"
                     android:padding="10dp"
                     android:text="TextView"
                     android:textColor="#FFFFFF"
@@ -59,36 +61,48 @@
                     android:padding="10dp">
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/textView24"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/text_products_promotion" />
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/txt_products_promotion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView" />
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/textView28"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/text_discount_promotion" />
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/txt_discount_promotion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView" />
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/textView29"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/text_price_promotion" />
 
                     <TextView
+                        android:fontFamily="sans-serif"
+
                         android:id="@+id/txt_price_promotion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -101,6 +115,8 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:fontFamily="sans-serif-black"
+
                             android:id="@+id/btn_update_promotion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -109,6 +125,8 @@
                             app:backgroundTint="#FF9800" />
 
                         <Button
+                            android:fontFamily="sans-serif-black"
+
                             android:id="@+id/btn_delete_promotion"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.example.pizzamellisos.sale;
+package com.example.pizzamellisos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,19 +21,14 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.pizzamellisos.about_us.AboutUs;
-import com.example.pizzamellisos.IniciarSesionActivity;
-import com.example.pizzamellisos.promotion.Promocion;
-import com.example.pizzamellisos.R;
-import com.example.pizzamellisos.UserProfile;
-import com.example.pizzamellisos.sale.dialog.add_sales;
-import com.example.pizzamellisos.sale.dialog.show_sale_dialog;
+import com.example.pizzamellisos.dialogs.add_sales;
+import com.example.pizzamellisos.dialogs.show_sale_dialog;
 import com.example.pizzamellisos.entities.Product;
 import com.example.pizzamellisos.entities.SaleDetail;
 import com.example.pizzamellisos.entities.SaleDetailForView;
 import com.example.pizzamellisos.entities.SaleHeader;
 import com.example.pizzamellisos.entities.SaleHeaderForView;
-import com.example.pizzamellisos.producto.Producto;
+import com.example.pizzamellisos.user.UserProfile;
 import com.example.pizzamellisos.utils.Api;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
