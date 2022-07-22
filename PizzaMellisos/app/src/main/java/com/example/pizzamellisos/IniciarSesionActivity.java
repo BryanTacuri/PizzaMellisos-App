@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pizzamellisos.sale.PantallaPrincipalActiviry;
@@ -25,6 +26,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     private EditText password;
     private FirebaseAuth mAuth;
     private Button btnLogin;
+    private TextView nombre;
 
     private CheckBox checkGuardarSesion;
     SharedPreferences preferences;
@@ -44,6 +46,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("sesiones", Context.MODE_PRIVATE);
         editor = preferences.edit();
+
 
 
         if(revisarSesion()){

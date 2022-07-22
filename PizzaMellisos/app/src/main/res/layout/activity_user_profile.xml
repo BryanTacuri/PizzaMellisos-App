@@ -20,28 +20,30 @@
             android:padding="20dp">
 
             <TextView
-                    android:id="@+id/full_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/profile_image"
-                    android:fontFamily="sans-serif-black"
-                    android:includeFontPadding="false"
-                    android:text="Bryan Tacuri"
-                    android:textColor="#000"
-                    android:textSize="20sp"
+                android:id="@+id/full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/profile_image"
+                android:background="#00FFFFFF"
+                android:fontFamily="sans-serif-black"
+                android:includeFontPadding="false"
+                android:text="Bryan Tacuri"
+                android:textColor="#000"
 
-                    />
+                android:textSize="20sp"
+                app:drawableTint="#ECE8E8" />
 
             <TextView
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/full_name"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/profile_image"
                 android:includeFontPadding="false"
                 android:text="beta@gmail.com    "
+                android:id="@+id/correoUser"
                 android:textSize="14sp" />
 
 

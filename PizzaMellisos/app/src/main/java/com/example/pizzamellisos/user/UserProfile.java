@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -31,18 +32,16 @@ import com.google.firebase.database.ValueEventListener;
 public class UserProfile extends AppCompatActivity {
     private Spinner spinnerCiudad;
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
-    private EditText correo, password, nombre, apellido, edad, telefono;
+  private EditText correo, password, nombre, apellido, edad, telefono;
     private RadioButton rbmasculino, rbfemenino;
     private RadioGroup radioGroup;
     private String seleccion;
-
+    private TextView correoUser;
     private String llave = "credenciales";
     String idUseer;
     DatabaseReference reference;
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
 
+   private TextView fullName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +61,8 @@ public class UserProfile extends AppCompatActivity {
         rbmasculino = findViewById(R.id.rbMasculino);
         rbfemenino = findViewById(R.id.rbFemenino);
         radioGroup = findViewById(R.id.radioSexo);
-
-
+    correoUser = findViewById(R.id.correoUser);
+        fullName = findViewById(R.id.full_name);
 
 
 
@@ -81,7 +80,6 @@ public class UserProfile extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         idUseer = mAuth.getCurrentUser().getUid();
         correo.setText(user.getEmail());
-        Toast.makeText(this, mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
 
 
       DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -122,7 +120,8 @@ public class UserProfile extends AppCompatActivity {
                         spinnerCiudad.setSelection(2);
                     }
 
-
+                    correoUser.setText(corr);
+                    fullName.setText(name+" "+apellid);
                     nombre.setText(name);
                     apellido.setText(apellid);
                     correo.setText(corr);
@@ -151,6 +150,8 @@ public class UserProfile extends AppCompatActivity {
 
 
     public void editarUsuario(View view){
+        fullName.setText(nombre.getText().toString()+" "+apellido.getText().toString());
+        correoUser.setText(correo.getText().toString());
         seleccion = spinnerCiudad.getSelectedItem().toString();
         mAuth = FirebaseAuth.getInstance();
         idUseer = mAuth.getCurrentUser().getUid();
